@@ -3,5 +3,5 @@
 |:---:|:---:|:---:|
 |s3916884|Jun Sik Kang|@akaps98|
 |s3823477|vao|@vgiabao|
-|s3885751|Hoang Duc Phuong|@|
-|s3790708|Minh|@|
+|s3885751|Hoang Duc Phuong|@hoangducphuong|
+|s3790708|Vu Viet Minh|@minhboro197|
