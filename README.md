@@ -1,4 +1,5 @@
 # InstaKilogram
+#####Team Member
 |sID|Name|Github ID|
 |:---:|:---:|:---:|
 |s3916884|Jun Sik Kang|@akaps98|
