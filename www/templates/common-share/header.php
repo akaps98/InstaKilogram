@@ -1,14 +1,33 @@
+<?php
+
+function navigate($target)
+{
+    $home_page = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]" . "/InstaKilogram/www";
+    $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    if (!$target) return $home_page;
+    if (strpos($actual_link, $target)) {
+        return $actual_link;
+    }
+    return $home_page . $target;
+}
+
+function onIconClick()
+{
+    header("Location: " . navigate(''));
+}
+
+?>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    <a class="navbar-brand" href="#">Instakilogram</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" onClick="<? onIconClick(); ?>"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="<?= navigate('') ?>">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>
@@ -26,7 +45,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
+                <a class="nav-link" href="<?= navigate('/templates/upload/upload.php') ?>">Upload</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
