@@ -12,7 +12,7 @@
 <body>
 <header class="header header-container">
     <!--start nav bar -->
-    <?php include('./templates/common-share/header.php')?>
+    <?php include('./templates/common-share/header_not_log_in.php')?>
 <!--    end nav bar-->
 </header>
 <main>
