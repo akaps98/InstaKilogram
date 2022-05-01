@@ -1,15 +1,16 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+require_once __DIR__ . '/../../php/csv-handler.php';
+require_once __DIR__ . '/../../php/post-listing-handler.php';
+?>
 
-
-
-
-<div id="container-fluid">
+<style> <?
+    require_once __DIR__ . '/../../css/card.css'; ?>
+</style>
 <!--    TODO: add image listing-->
-    <h1> Home Page Works</h1>
-    <?php require_once(getcwd(). '/templates/post-listing/posts.php')  ; ?>
+<h1 class="text-center"> Welcome To InstaKilogram</h1>
+<div class="card-group text-center">
+    <?php postListing(); ?>
 </div>
-
-<!--<h1>-->
-<!--    --><?php //require('../post-listing/posts.php'); ?>
-<!--</h1>-->
-
-

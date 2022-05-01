@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    -ms-overflow-style: none;
+}
+
+hr {
+    margin: 0 auto;
+    border-top: 1px solid #bbb;
+    box-shadow: 0 10px 10px -10px #bbb inset;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+main {
+    width: 100%;
+    height: 800px;
+}
+
+input {
+    color:black;
+}
+
+#signup_text {
+    color:black;
+}
+
+.navbar {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+
+.nav-link {
+    color: gray;
+}
+
+.nav-link:hover {
+    color: black;
+}
+
+.signupbox {
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.formbox {
+    width: 28%;
+    margin: 0 auto;
+}
+
+.fs-4 {
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+.dateofbirth {
+    display: flex;
+    margin: auto;
+}
+
+#signup {
+    margin-top: 25px;
+}
+
+.input-box {
+    position: relative;
+    margin: 10px 0;
+    padding-right: 5px;
+}
+
+#check-email {
+    margin: auto 0;
+}
+
+#check-pw-len {
+    color:black;
+}
+
+#check-password {
+    color:black;
+}
+
+#check-fname {
+    color:black;
+}
+
+#check-lname {
+    color:black;
+}
+
+.input-box > input {
+    background: transparent;
+    border: none;
+    border-bottom: solid 1px #ccc;
+    padding: 20px 0px 5px 0px;
+    font-size: 14pt;
+    width: 100%;
+}
+
+input::placeholder {
+    color: transparent;
+}
+
+input:placeholder-shown + label {
+    color: #aaa;
+    font-size:14pt;
+    top: 15px;
+}
+
+input:focus + label, label{
+    color: #8aa1a1;
+    font-size: 10pt;
+    pointer-events: none;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    transition: all 0.2s ease ;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+}
+
+input:focus, input:not(:placeholder-shown){
+    border-bottom: solid 1px #8aa1a1;
+    outline:none;
+}

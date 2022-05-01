@@ -22,9 +22,9 @@ require_once '../../php/auth-handler.php';
 <main style="margin-top:33px;">
     <!--Sign up-->
     <div class="signupbox">
-        <h2 class="fs-4 fw-bold" id="signup_text">Login</h2>
+        <h2 class="fs-4 fw-bold" id="signup_text">Admin Login</h2>
         <div class="formbox">
-            <form action="login.php" method="post" enctype="multipart/form-data">
+            <form action="admin-login.php" method="post" enctype="multipart/form-data">
                 <!--Input email-->
                 <div class="input-email">
                     <div class="input-box">
@@ -40,8 +40,7 @@ require_once '../../php/auth-handler.php';
                         <label for="password">Password</label>
                     </div>
                 </div>
-                <a href="<?= navigate('/templates/auth/register.php') ?>"> Do not have password? Register now! </a>
-                <h3> <?php login()?></h3>
+                <h3> <?php login(true)?></h3>
                 <button class="btn btn-primary btn-lg" id="login" type="submit">Login
                 </button>
             </form>
