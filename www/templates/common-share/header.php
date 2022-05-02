@@ -20,7 +20,7 @@ if (isset($_GET['logout'])) {
             <li class="nav-item active">
                 <a class="nav-link" href="<?= navigate('') ?>">Home <span class="sr-only">(current)</span></a>
             </li>
-            <?php if (!array_key_exists( 'logged', $_SESSION)): ?>
+            <?php if (!isset($_SESSION['logged'])): ?>
                 <li class="nav-item dropdown">
 
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -45,10 +45,11 @@ if (isset($_GET['logout'])) {
                     </li>
                 <?php else: ?>
                 <?php endif; ?>
+
             <?php endif; ?>
         </ul>
         <ul class="navbar-nav">
-            <?php if (!array_key_exists( 'logged', $_SESSION)): ?>
+            <?php if (!isset($_SESSION['logged'])): ?>
                 <li class="nav-item"></li>
             <?php else: ?>
                 <li class="nav-item">
