@@ -27,8 +27,10 @@ function getUploadInput()
 
 function getImage(){
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $image = file_get_contents($_FILES["image"]["tmp_name"]);
-        return convertImageToBinary($image);
+        if(!empty($_FILES['image']["tmp_name"])){
+            $image = file_get_contents($_FILES["image"]["tmp_name"]);
+            return convertImageToBinary($image);
+        }
     }
 }
 
