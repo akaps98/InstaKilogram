@@ -24,13 +24,14 @@ require_once '..'.DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'php' . DIRECTOR
     <div class="signupbox">
         <h2 class="fs-4 fw-bold" id="signup_text">Sign Up</h2>
         <div class="formbox">
-            <form action="register.php" method="post" enctype="multipart/form-data">
+            <form action="register.php" method="post" onsubmit="check_signup(event)" enctype="multipart/form-data">
                 <!--Input email-->
                 <div class="input-email">
                     <div class="input-box">
-                        <input id="email-ad" name="email-ad" type="email" placeholder="Email address">
-                        <label for="email-ad">Email address</label>
+                        <input id="email-add" name="email-add" type="email" placeholder="Email address" onchange="check_email();">
+                        <label for="email-add">Email address</label>
                     </div>
+                    <span id= "check_email"></span>
                     <?php isValidEmail() ?>
                     <!--check email validation(unique)-->
                 </div>
@@ -41,11 +42,12 @@ require_once '..'.DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'php' . DIRECTOR
                                onchange="check_pass();">
                         <label for="password">Password</label>
                     </div>
-                    <span id="check-pw-len"></span>
+                    <span id="check-valid-pass"></span>
+                    <?php isValidPassword() ?>
                     <!--Recheck password-->
                     <div class="input-box">
                         <input id="password-confirm" name="password-confirm" type="password"
-                               placeholder="Check Password" onchange="check_pass();">
+                               placeholder="Check Password" onchange="check_confirm_pass();">
                         <label for="password-confirm">Check password</label>
                     </div>
                     <span id="check-password"></span>
@@ -61,8 +63,9 @@ require_once '..'.DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'php' . DIRECTOR
                 <!--upload photo-->
                 <div class="upload-pic-button flex-column d-flex flex-start">
                     <p class="d-flex flex-start">Upload Photo</p>
-                    <input type="file" id="image" name="image" accept="image/*">
+                    <input type="file" id="image" name="image" onfocusout="check_file_extention();" accept="image/*">
                 </div>
+                <?php isValidFileExtention() ?>
                 <div class="input-name">
                     <!--input first name-->
                     <div class="input-box">
@@ -71,6 +74,7 @@ require_once '..'.DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'php' . DIRECTOR
                         <label for="first-name">First name</label>
                     </div>
                     <span id="check-fname"></span>
+                    <?php isValidFirstName() ?>
                     <!--input last name-->
                     <div class="input-box">
                         <input id="last-name" name="last-name" type="last-name" placeholder="Last name"
@@ -78,10 +82,11 @@ require_once '..'.DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'php' . DIRECTOR
                         <label for="last-name">Last name</label>
                     </div>
                     <span id="check-lname"></span>
+                    <?php isValidLastName() ?>
                 </div>
                 <a href="<?= navigate('/templates/auth/login.php') ?>"> Already have one account? Login now! </a>
                 <h3> <?php register()?></h3>
-                <button class="btn btn-primary btn-lg" id="signup" type="submit" onclick="check_signup();">Sign Up
+                <button class="btn btn-primary btn-lg" id="signup" type="submit" >Sign Up
                 </button>
             </form>
         </div>
