@@ -121,7 +121,7 @@ async function check_signup(event) {
     let input_lname = document.getElementById("last-name").value;
 
     if(!input_email || !input_pass ||!confirm_pass || !input_fname || !input_lname) {
-        //event.preventDefault();
+        event.preventDefault();
         alert("Fail to register. \nPlease fill in the blanks.");
         if(!input_email){
             document.querySelector("#email-add").style.borderBottom = "solid 1px red"; 
