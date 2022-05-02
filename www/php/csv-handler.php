@@ -25,8 +25,8 @@ function readFileWithConditions($filePath, $index, $condition, $index1 = 0, $con
     $data = [];
     $ite = 0;
     $content = fopen($filePath, 'r');
-    if (!$content) return false;
     while (($row = fgetcsv($content)) !== false) {
+
         if ($ite === 0) {
             $ite++;
             continue;
@@ -113,7 +113,7 @@ function getUser($filePath, $email, $password, $isAdminLogin=false)
     return null;
 }
 
-function getUserById($id, $filePath = __DIR__ . '\..\data\users.csv')
+function getUserById($id, $filePath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'data' .DIRECTORY_SEPARATOR. 'users.csv')
 {
     $content = fopen($filePath, 'r');
     if (!$content) return false;
@@ -127,7 +127,7 @@ function getUserById($id, $filePath = __DIR__ . '\..\data\users.csv')
 
 function getPosts($userType)
 {
-    $path = __DIR__ . '\..\data\posts.csv';
+    $path = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR. 'data'. DIRECTORY_SEPARATOR . 'posts.csv';
     switch ($userType) {
         case 'admin':
             return readCSVFile($path);

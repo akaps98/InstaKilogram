@@ -1,5 +1,5 @@
 <?php
-require_once '../../php/auth-handler.php';
+require_once '..'.DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'php' . DIRECTORY_SEPARATOR.'auth-handler.php';
 ?>
 
 <!DOCTYPE html>

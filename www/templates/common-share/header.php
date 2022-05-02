@@ -11,7 +11,7 @@ if (isset($_GET['logout'])) {
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light position-fixed" style="width: 100vw; z-index: 100">
     <a class="navbar-brand" href="#">Instakilogram</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" onClick="<? onIconClick(); ?>"
+    <button class="navbar-toggler" type="button" data-toggle="collapse" >
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     </button>
 
@@ -20,7 +20,7 @@ if (isset($_GET['logout'])) {
             <li class="nav-item active">
                 <a class="nav-link" href="<?= navigate('') ?>">Home <span class="sr-only">(current)</span></a>
             </li>
-            <?php if (!isset($_SESSION['logged'])): ?>
+            <?php if (!array_key_exists( 'logged', $_SESSION)): ?>
                 <li class="nav-item dropdown">
 
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -45,11 +45,10 @@ if (isset($_GET['logout'])) {
                     </li>
                 <?php else: ?>
                 <?php endif; ?>
-
             <?php endif; ?>
         </ul>
         <ul class="navbar-nav">
-            <?php if (!isset($_SESSION['logged'])): ?>
+            <?php if (!array_key_exists( 'logged', $_SESSION)): ?>
                 <li class="nav-item"></li>
             <?php else: ?>
                 <li class="nav-item">

@@ -4,7 +4,7 @@ require_once __DIR__. "/csv-handler.php";
 function getUploadInput()
 {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $filePath = __DIR__ . '\..\data\posts.csv';
+        $filePath = __DIR__ . DIRECTORY_SEPARATOR . '..'.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'posts.csv';
         $title = validateInput($_POST['title']);
         $description = validateInput($_POST['description']);
         $privacy = validateInput($_POST['privacy']);

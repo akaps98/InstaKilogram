@@ -12,16 +12,16 @@
 <body>
 <header class="header header-container">
     <!--start nav bar -->
-    <?php include('./templates/common-share/header.php')?>
+    <?php require_once './templates/common-share/header.php'?>
 <!--    end nav bar-->
 </header>
 <main>
     <div class="container-fluid">
-    <?php require('./templates/homepage/homepage.php') ?>
+    <?php require_once './templates/homepage/homepage.php' ?>
     </div>
 </main>
 <footer>
-    <?php include('./templates/common-share/footer.php')?>
+    <?php require_once './templates/common-share/footer.php'?>
 </footer>
 </body>
 </html>

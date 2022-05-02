@@ -1,5 +1,5 @@
 <?php
-require_once '../../php/user-listing-handler.php';
+require_once __DIR__ . '/../../php/user-listing-handler.php';
 
 ?>
 
@@ -43,6 +43,6 @@ require_once '../../php/user-listing-handler.php';
 </main>
 <!--footer-->
 <footer>
-    <?php require('../common-share/footer.php'); ?>
+    <?php require __DIR__. ('/../common-share/footer.php'); ?>
 </footer>
 </body>

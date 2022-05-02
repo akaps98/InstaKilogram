@@ -35,7 +35,7 @@ require_once '../../php/user-listing-handler.php';
             </tr>
             </thead>
             <tbody>
-            <?php renderListing(__DIR__ . '\..\..\data\posts.csv'); ?>
+            <?php renderListing(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'posts.csv'); ?>
             </tbody>
         </table>
     </div>
