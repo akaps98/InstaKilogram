@@ -95,17 +95,17 @@ function isValidCSVContent($filePath, $content)
     return true;
 }
 
-function getUser($filePath, $email, $password, $isAdminLogin=false)
+function getUser($filePath, $email, $isAdminLogin=false)
 {
     $content = fopen($filePath, 'r');
     if (!$content) return false;
     while (($row = fgetcsv($content)) !== false) {
         if (!$isAdminLogin) {
-            if ($row[3] === $email && $row[4] === $password) {
+            if ($row[3] === $email) {
                 return $row;
             }
         } else {
-            if ($row[3] === $email && $row[4] === $password && $row[5] === 'admin') {
+            if ($row[3] === $email && $row[5] === 'admin') {
                 return $row;
             }
         }

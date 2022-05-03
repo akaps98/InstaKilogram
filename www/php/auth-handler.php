@@ -81,7 +81,7 @@ function isValidLastName(){
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $lname = validateInput($_POST['last-name']);
         if($lname){
-            if ( !(strlen($lname) > 2 && strlen($lname) < 20)){
+            if ( !(strlen($lname) >= 2 && strlen($lname) <= 20)){
                 echo "Last name's length must be from 2 to 20 characters";
                 return false;
             }else{
@@ -130,8 +130,8 @@ function register()
         
         // Problem when calling these valid function, it will print the error along with "Register Sucessfully"
         if( isValidEmail() &&  isValidPassword() && isValidFirstName() && isValidLastName() && isValidFileExtention()){
-
-            writeToFile($userPath, [$id, $fName.' '. $lName, $gender, $email, $pw, 'user', $image]);
+            $password_hashed = password_hash($pw, PASSWORD_BCRYPT);
+            writeToFile($userPath, [$id, $fName.' '. $lName, $gender, $email, $password_hashed, 'user', $image]);
             echo "Register Sucessfully";
         }else{
             echo "False to Register";
@@ -144,14 +144,19 @@ function login($isAdminLogin=false)
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = validateInput($_POST['email-add']);
         $pw = validateInput($_POST['password']);
-        $result = getUser( __DIR__ . '\..\data\users.csv', $email, $pw, $isAdminLogin);
-        if ($result) {
-            echo "Login Successfully! ";
-            setUserSession($result);
-            header("Location: ../user/profile.php");
-            exit;
+        $result = getUser( __DIR__ . '\..\data\users.csv', $email, $isAdminLogin);
+        if($result){
+            if (password_verify($pw, $result[4])) {
+                echo "Login Successfully! ";
+                setUserSession($result);
+                header("Location: ../user/profile.php");
+                exit;
+            }else{
+                echo "Wrong password";
+            }
+        }else{
+            echo "Your Email is invalid";
         }
-        echo "Your Email/Password is invalid!";
         return null;
     }
 }
