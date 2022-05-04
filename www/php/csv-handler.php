@@ -7,14 +7,9 @@ function readCSVFile($filePath, $condition = '')
     $ite = 0;
     if (!$content) return false;
     while (($row = fgetcsv($content)) !== false) {
-        // ignore the row if do not match the condition
-        if ($ite === 0) {
-            $ite++;
-            continue;
+        if(array(null) !== $row){
+            $data[] = $row;
         }
-        if ($condition && !in_array($condition, $row)) continue;
-        // put the row matching the condition to array
-        $data[] = $row;
     }
     fclose($content);
     return array_reverse($data);
