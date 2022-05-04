@@ -28,8 +28,8 @@ require_once '../../php/auth-handler.php';
                 <!--Input email-->
                 <div class="input-email">
                     <div class="input-box">
-                        <input id="email-ad" name="email-ad" type="email" placeholder="Email address">
-                        <label for="email-ad">Email address</label>
+                        <input id="email-add" name="email-add" type="email" placeholder="Email address">
+                        <label for="email-add">Email address</label>
                     </div>
                     <!--check email validation(unique)-->
                 </div>
