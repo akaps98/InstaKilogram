@@ -127,7 +127,7 @@ function register()
         $image = getImage();
         $fName = validateInput($_POST['first-name']);
         $lName = validateInput($_POST['last-name']);
-        
+
         // Problem when calling these valid function, it will print the error along with "Register Sucessfully"
         if( isValidEmail() &&  isValidPassword() && isValidFirstName() && isValidLastName() && isValidFileExtention()){
             $password_hashed = password_hash($pw, PASSWORD_BCRYPT);
@@ -147,9 +147,14 @@ function login($isAdminLogin=false)
         $result = getUser( __DIR__ . '\..\data\users.csv', $email, $isAdminLogin);
         if($result){
             if (password_verify($pw, $result[4])) {
-                echo "Login Successfully! ";
                 setUserSession($result);
-                header("Location: ../user/profile.php");
+                if(!$isAdminLogin){
+                    header("Location: ../user/profile.php");
+                }else{
+                    header("Location: ../admin-page/admin.php");
+                }
+                echo "Login Successfully! ";
+
                 exit;
             }else{
                 echo "Wrong password";
@@ -161,8 +166,10 @@ function login($isAdminLogin=false)
     }
 }
 
-function adminLogin(){
-
+function viewDetail($result){
+    $_SESSION['logged'] = $result[0];
+    $_SESSION['userType'] = $result[5];
+    header("Location: ../user/profile.php");
 }
 
 function setUserSession($result){
