@@ -35,9 +35,12 @@ require_once __DIR__ . '/../../php/user-listing-handler.php';
                 <th scope="col">Action</th>
             </tr>
             </thead>
+            <form action="user-management.php" method="get">
             <tbody>
             <?php renderListing(); ?>
             </tbody>
+            <?php directToUserProfile(); ?>
+            </form>
         </table>
     </div>
 </main>
