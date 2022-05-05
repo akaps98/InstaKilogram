@@ -7,6 +7,7 @@ require_once "../../php/upload-handler.php";
 $user = getUserById($_SESSION['logged']);
 ?>
 
+<div class="page-content page-container" id="page-content">
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +18,7 @@ $user = getUserById($_SESSION['logged']);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/auth/register.css">
+    <link rel="stylesheet" href="../../css/profile.css">
 </head>
 <body>
 <header>
@@ -25,13 +27,60 @@ $user = getUserById($_SESSION['logged']);
 <hr size="3">
 <main style="margin-top:33px;">
     <!--Sign up-->
-    <div class="signupbox">
-        <h2 class="fs-4 fw-bold" id="signup_text">User Profile</h2>
-            <h2> User: <?= $user[1] ?> </h2>
-            <h2> Email: <?= $user[3] ?> </h2>
-            <h2> Role: <?= $user[5] ?> </h2>
-        <img src="data:image/jpg;charset=utf8;base64,<?php echo $user[6] ?>"/>
-        </div>
+    <div class="w3-container">
+     <div class="profile-pic">
+    <label class="-label" for="file">
+      <span class="glyphicon glyphicon-camera"></span>
+      <span>Change Image</span>
+  </label>
+  <input id="file" type="file" onchange="loadFile(event)"/>
+  <img src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" id="output" width="200" />
+</div>
+      <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>User Id</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>a123</p>
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>a123@gmail.com</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Phone</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>123 456 7890</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Role</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Web Developer and Designer</p>
+                                            </div>
+                                        </div>
+                              <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Password</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>hidden password</p>
+                                            </div>
+                                        </div>
+                            </div>
     </div>
 </main>
 <!--footer-->
