@@ -1,0 +1,147 @@
+@media only screen and (min-width: 1024px) {
+
+    p,
+    li,
+    b,
+    span,
+    label,
+    input {
+        font-size: 12px
+    }
+
+    .w3-container .col-md-8 {
+        display: block;
+    }
+
+    .w3-container {
+        padding-left: 7px;
+        padding-right: 7px;
+        margin-bottom: 10px
+    }
+
+    .profile-img {
+        text-align: center;
+    }
+
+    .profile-img img {
+        width: 70%;
+        height: 100%;
+    }
+
+    .profile-img .file {
+        position: relative;
+        overflow: hidden;
+        margin-top: -20%;
+        width: 70%;
+        border: none;
+        border-radius: 0;
+        font-size: 15px;
+        background: #212529b8;
+    }
+
+    .profile-img .file input {
+        position: absolute;
+        opacity: 0;
+        right: 0;
+        top: 0;
+    }
+
+    @media only screen and (max-width: 480px) 
+    {
+
+        p,
+        li,
+        b,
+        span,
+        label,
+        input {
+            font-size: 10px
+        }
+
+        .w3-container .col-md-8 {
+            display: block;
+        }
+
+        .w3-container {
+            padding-left: 7px;
+            padding-right: 7px;
+            margin-bottom: 10px
+        }
+
+        .profile-img {
+            text-align: center;
+        }
+
+        .profile-img img {
+            width: 70%;
+            height: 100%;
+        }
+
+        .profile-img .file {
+            position: relative;
+            overflow: hidden;
+            margin-top: -20%;
+            width: 70%;
+            border: none;
+            border-radius: 0;
+            font-size: 15px;
+            background: #212529b8;
+        }
+
+        .profile-img .file input {
+            position: absolute;
+            opacity: 0;
+            right: 0;
+            top: 0;
+        }
+
+        @media only screen and (min-width: 768px) and (max-width:1023px) {
+
+            p,
+            li,
+            b,
+            span,
+            label,
+            input {
+                font-size: 14px;
+            }
+
+            .w3-container .col-md-8 {
+                display: block;
+            }
+
+            .w3-container {
+                padding-left: 7px;
+                padding-right: 7px;
+                margin-bottom: 10px
+            }
+
+            .profile-img {
+                text-align: center;
+            }
+
+            .profile-img img {
+                width: 70%;
+                height: 100%;
+            }
+
+            .profile-img .file {
+                position: relative;
+                overflow: hidden;
+                margin-top: -20%;
+                width: 70%;
+                border: none;
+                border-radius: 0;
+                font-size: 15px;
+                background: #212529b8;
+            }
+
+            .profile-img .file input {
+                position: absolute;
+                opacity: 0;
+                right: 0;
+                top: 0;
+            }
+        }
+}
+}

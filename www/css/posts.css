@@ -1,0 +1,40 @@
+.card-group {
+    display: flex;
+    justify-content: space-between;
+ }
+ 
+ .card-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+ }
+ 
+ .w3-container {
+     flex: 0 1 calc(4px - 16px);
+ }
+  
+ .w3-container {
+     flex: 1 0 500px;
+     box-sizing: border-box;
+     margin: 16px .400px;
+ }
+ 
+ @media screen and (min-width: 480px) {
+     .card-group {
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: space-between;
+     }
+  
+     .card {
+         flex: 0 1 calc(50% - 16px);
+     }
+ }
+ 
+ @media screen and (min-width: 768px) and (max-width:1023px) {
+     .card {
+         flex: 0 1 calc(25% - 16px);
+     }
+ }
+ 
+ body,h5 {font-family: "Raleway", sans-serif}
