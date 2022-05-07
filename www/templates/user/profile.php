@@ -33,8 +33,8 @@ $user = getUserById($_SESSION['logged']);
       <span class="glyphicon glyphicon-camera"></span>
       <span>Change Image</span>
   </label>
-  <input id="file" type="file" onchange="loadFile(event)"/>
-  <img src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" id="output" width="200" />
+  <img src="data:image/jpg;charset=utf8;base64,<?php echo $user[6] ?>" id="profile-image" width="200" data-toggle="modal" data-target="#exampleModal" />
+</button>
 </div>
       <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
@@ -44,7 +44,7 @@ $user = getUserById($_SESSION['logged']);
                                                 <label>User Id</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>a123</p>
+                                                <p><?= $user[0] ?></p>
                                             </div>
                                         </div>
                                        
@@ -53,7 +53,7 @@ $user = getUserById($_SESSION['logged']);
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>a123@gmail.com</p>
+                                                <p><?= $user[3] ?></p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -69,7 +69,7 @@ $user = getUserById($_SESSION['logged']);
                                                 <label>Role</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Web Developer and Designer</p>
+                                                <p><?= $user[5] ?></p>
                                             </div>
                                         </div>
                               <div class="row">
@@ -82,6 +82,30 @@ $user = getUserById($_SESSION['logged']);
                                         </div>
                             </div>
     </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <img src="data:image/jpg;charset=utf8;base64,<?php echo $user[6] ?>" id="output" width="200" />
+      <input id="file" type="file" onchange="loadFile(event)"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 </main>
 <!--footer-->
 <footer>

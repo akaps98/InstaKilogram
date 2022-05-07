@@ -108,6 +108,26 @@ function getUser($filePath, $email, $isAdminLogin=false)
     return null;
 }
 
+function getUsers($filePath, $name){
+
+    $pattern = "/(?=.*".$name.")/i";
+    $content = fopen($filePath, 'r');
+    $matches = array();
+    if (!$content) return false;
+
+    while (($row = fgetcsv($content)) !== false) {
+
+        if (preg_match($pattern, $row[1]) || preg_match($pattern, $row[3])) {
+            $matches[] =  $row;
+        }
+    }
+    if(count($matches)){
+        return $matches;
+    }
+    return null;
+    
+}
+
 function getUserById($id, $filePath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'data' .DIRECTORY_SEPARATOR. 'users.csv')
 {
     $content = fopen($filePath, 'r');

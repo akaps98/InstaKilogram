@@ -14,6 +14,8 @@ function isValidEmail()
     $email = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = validateInput($_POST['email-add']);
+
+
         if ($email){
             //Aligned with RFC 5322 
             if(!preg_match('/^(?!(?>(?1)"?(?>\\\[ -~]|[^"])"?(?1)){255,})(?!(?>(?1)"?(?>\\\[ -~]|[^"])"?(?1)){65,}@)((?>(?>(?>((?>(?>(?>\x0D\x0A)?[\t ])+|(?>[\t ]*\x0D\x0A)?[\t ]+)?)(\((?>(?2)(?>[\x01-\x08\x0B\x0C\x0E-\'*-\[\]-\x7F]|\\\[\x00-\x7F]|(?3)))*(?2)\)))+(?2))|(?2))?)([!#-\'*+\/-9=?^-~-]+|"(?>(?2)(?>[\x01-\x08\x0B\x0C\x0E-!#-\[\]-\x7F]|\\\[\x00-\x7F]))*(?2)")(?>(?1)\.(?1)(?4))*(?1)@(?!(?1)[a-z\d-]{64,})(?1)(?>([a-z\d](?>[a-z\d-]*[a-z\d])?)(?>(?1)\.(?!(?1)[a-z\d-]{64,})(?1)(?5)){0,126}|\[(?:(?>IPv6:(?>([a-f\d]{1,4})(?>:(?6)){7}|(?!(?:.*[a-f\d][:\]]){8,})((?6)(?>:(?6)){0,6})?::(?7)?))|(?>(?>IPv6:(?>(?6)(?>:(?6)){5}:|(?!(?:.*[a-f\d]:){6,})(?8)?::(?>((?6)(?>:(?6)){0,4}):)?))?(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)(?>\.(?9)){3}))\])(?1)$/isD',$email)){
@@ -22,17 +24,18 @@ function isValidEmail()
             }else{
                 global $checkedEmail;
                 $checkedEmail = true;
+                //Check identical email
+                $data = readCSVFile(__DIR__ . '\..\data\users.csv');
+                for ($x = 1; $x < count($data); $x++) {
+                    if (($data[$x][3]) === $email) {
+                        echo "Email is already exist, Please choose another one!";;
+                        return false;
+                    }
+                }
                 return true;
             }
         }else{
             echo "Email cannot be empty!";
-            return false;
-        }
-    }
-    $data = readCSVFile(__DIR__ . '\..\data\users.csv');
-    for ($x = 1; $x < count($data); $x++) {
-        if (($data[$x][3]) === $email) {
-            echo "Email is already exist, Please choose another one!";;
             return false;
         }
     }
@@ -61,7 +64,7 @@ function isValidFirstName(){
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $fname = validateInput($_POST['first-name']);
         if($fname){
-            if ( !(strlen($fname) > 2 && strlen($fname) < 20)){
+            if ( !(strlen($fname) >= 2 && strlen($fname) <= 20)){
                 echo "First name's length must be from 2 to 20 characters";
                 return false;
             }else{
@@ -99,10 +102,10 @@ function isValidLastName(){
 
 function isValidFileExtention(){
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $image = $_FILES["image"]["name"];
+        $image = $_FILES["image"]["type"];
         if($image){
             $validExtention = array("jpg", "jpeg", "png", "gif");
-            $extension = strtolower(pathinfo($image, PATHINFO_EXTENSION));
+            $extension = strtolower(substr($image,strpos($image,"/")+1));
             global $checkedImageExtension;
             for($x=0; $x < count($validExtention); $x++){
                 if(strcmp($validExtention[$x], $extension) == 0){

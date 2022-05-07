@@ -12,7 +12,7 @@ require_once __DIR__ . '/../../php/user-listing-handler.php';
     <title>Admin - User management</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../css/auth/register.css">
+    
 
 </head>
 <body>
@@ -22,26 +22,26 @@ require_once __DIR__ . '/../../php/user-listing-handler.php';
 <hr size="3">
 <main style="margin-top:33px;">
     <!--Sign up-->
+    
     <div class="container-fluid table-responsive-sm">
-        <table class="table">
-            <caption>List of users</caption>
-            <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Role</th>
-                <th scope="col">Action</th>
-            </tr>
-            </thead>
-            <form action="user-management.php" method="get">
-            <tbody>
-            <?php renderListing(); ?>
-            </tbody>
-            <?php directToUserProfile(); ?>
-            </form>
-        </table>
+        <form action="user-management.php" method="get">
+            <input type="text" name="q-name" id="search-user" placeholder = "Search user"></input>
+            <input type="submit" value="submit" >
+        </form>
+        <form action="user-management.php" method="get">     
+            <table class="table">
+                <caption>List of users</caption>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Action</th>
+                </tr>
+                    <?php renderListing(); ?>
+            </table>
+        </form>
     </div>
 </main>
 <!--footer-->
