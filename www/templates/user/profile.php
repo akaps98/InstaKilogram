@@ -17,7 +17,6 @@ $user = getUserById($_SESSION['logged']);
     <title>Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../css/auth/register.css">
     <link rel="stylesheet" href="../../css/profile.css">
 </head>
 <body>
@@ -34,7 +33,8 @@ $user = getUserById($_SESSION['logged']);
       <span>Change Image</span>
   </label>
   <img src="data:image/jpg;charset=utf8;base64,<?php echo $user[6] ?>" id="profile-image" width="200" data-toggle="modal" data-target="#exampleModal" />
-</button>
+    <button data-toggle="modal" data-target="#exampleModal">
+        Edit Profile</button>
 </div>
       <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
@@ -47,7 +47,7 @@ $user = getUserById($_SESSION['logged']);
                                                 <p><?= $user[0] ?></p>
                                             </div>
                                         </div>
-                                       
+
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>Email</label>
@@ -82,7 +82,7 @@ $user = getUserById($_SESSION['logged']);
                                         </div>
                             </div>
     </div>
-
+    <?php editProfile($user)?>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -93,12 +93,44 @@ $user = getUserById($_SESSION['logged']);
         </button>
       </div>
       <div class="modal-body">
-      <img src="data:image/jpg;charset=utf8;base64,<?php echo $user[6] ?>" id="output" width="200" />
-      <input id="file" type="file" onchange="loadFile(event)"/>
+        <img src="data:image/jpg;charset=utf8;base64,<?php echo $user[6] ?>" id="output" width="200" />
+        
+        <form id="edit-profile-form" method="post" action="profile.php" enctype="multipart/form-data">
+            <input type="file" id="image" name="image" onfocusout="check_file_extention();" accept="image/*">
+
+            <div class="input-password">
+                <!--Input password-->
+
+                <div class="form-row">
+                    <div class="form-label">
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="form-field">
+                        <input id="password" name="password" type="password" placeholder="Password"
+                            onchange="check_pass();">
+                    </div>
+                </div>
+                <span id="check-valid-pass"></span>
+                <?php isValidPassword() ?>
+                <!--Recheck password-->
+
+                <div class="form-row">
+                    <div class="form-label">
+                        <label for="password-confirm">Check password</label>
+                    </div>
+                    <div class="form-field">
+                        <input id="password-confirm" name="password-confirm" type="password"
+                            placeholder="Check Password" onchange="check_confirm_pass();">
+                    </div>
+                </div>
+                <span id="check-password"></span>
+            </div>
+            
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit" form="edit-profile-form" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
