@@ -14,7 +14,16 @@ function readCSVFile($filePath, $condition = '')
     fclose($content);
     return array_reverse($data);
 }
-
+function getStringContent($filePath){
+    $fhandle = fopen($filePath,"r");
+    $content = fread($fhandle,filesize($filePath));
+    return $content;
+}
+function writeStringContentToFile($filePath, $content){
+    $fhandle = fopen($filePath,"w");
+    fwrite($fhandle,$content);
+    fclose($fhandle);
+}
 function readFileWithConditions($filePath, $index, $condition, $index1 = 0, $condition1 = '')
 {
     $data = [];
