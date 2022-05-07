@@ -142,6 +142,32 @@ function register()
     }
 }
 
+function editProfile($user){
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $password = validateInput($_POST['password']);
+        $password_hashed = password_hash($password, PASSWORD_BCRYPT);
+        $image = getImage();
+
+        $content = getStringContent(__DIR__ . '\..\data\users.csv');
+        $id = $user[0];
+        $pattern = '/'.$user[0].',"'.$user[1].'",'.$user[2].','.$user[3].'/';
+        preg_match($pattern, $content,$match,PREG_OFFSET_CAPTURE);
+        $startIndex = $match[0][1];
+        //print_r($startIndex);
+        //print_r(" ");
+        $endIndex = strpos($content,"\n",$startIndex);
+        //print_r($endIndex);
+        //print_r(" ");
+        //print_r($image);
+
+        $replacement = "$user[0],\"$user[1]\",$user[2],$user[3],$password_hashed,$user[5],$image";
+        $editedContent = substr_replace($content,$replacement,$startIndex,$endIndex-$startIndex);
+        
+        writeStringContentToFile(__DIR__ . '\..\data\users.csv', $editedContent);
+    }
+}
+
+
 function login($isAdminLogin=false)
 {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
