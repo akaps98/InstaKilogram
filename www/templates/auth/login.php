@@ -16,7 +16,7 @@ login();
 </head>
 <body>
 <header>
-    <?php require_once(__DIR__ .'..'.DIRECTORY_SEPARATOR.'common-share'.DIRECTORY_SEPARATOR.'header.php'); ?>
+    <?php require_once(__DIR__ . DIRECTORY_SEPARATOR .'..'.DIRECTORY_SEPARATOR.'common-share'.DIRECTORY_SEPARATOR.'header.php'); ?>
 </header>
 <hr size="3">
 <main style="margin-top:33px;">
