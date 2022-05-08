@@ -51,6 +51,6 @@ login();
 </main>
 <!--footer-->
 <footer>
-    <?php require('..'.DIRECTORY_SEPARATOR.'common-share'.DIRECTORY_SEPARATOR.'footer.php'); ?>
+    <?php require(__DIR__ . DIRECTORY_SEPARATOR .'..'.DIRECTORY_SEPARATOR.'common-share'.DIRECTORY_SEPARATOR.'footer.php'); ?>
 </footer>
 </body>

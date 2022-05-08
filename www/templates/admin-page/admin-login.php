@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__. DIRECTORY_SEPARATOR.'../../php/auth-handler.php';
+require_once __DIR__. DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'php'.DIRECTORY_SEPARATOR.'session-handler.php';
+require_once __DIR__. DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'php'.DIRECTORY_SEPARATOR.'auth-handler.php';
 ?>
 
 <!DOCTYPE html>
