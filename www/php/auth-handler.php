@@ -152,9 +152,9 @@ function login($isAdminLogin=false)
             if (password_verify($pw, $result[4])) {
                 setUserSession($result);
                 if(!$isAdminLogin){
-                    header("Location: " . ".." . DIRECTORY_SEPARATOR ."user" . DIRECTORY_SEPARATOR . "profile.php");
+                    header("Location: " . __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR ."user" . DIRECTORY_SEPARATOR . "profile.php");
                 }else{
-                    header("Location: ..".DIRECTORY_SEPARATOR."admin-page".DIRECTORY_SEPARATOR."admin.php");
+                    header("Location:". __DIR__ . DIRECTORY_SEPARATOR.  "..".DIRECTORY_SEPARATOR."admin-page".DIRECTORY_SEPARATOR."admin.php");
                 }
                 exit();
             }else{
