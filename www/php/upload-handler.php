@@ -34,6 +34,10 @@ function getImage(){
     }
 }
 
+function changeImage(){
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {}
+}
+
 
 function convertImageToBinary($image){
     return base64_encode($image);

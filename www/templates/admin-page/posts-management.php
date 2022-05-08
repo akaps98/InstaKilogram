@@ -1,6 +1,6 @@
 <?php
-require_once '../../php/user-listing-handler.php';
-
+require_once __DIR__ . '/../../php/user-listing-handler.php';
+directToUserProfile()
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +23,7 @@ require_once '../../php/user-listing-handler.php';
 <main style="margin-top:33px;">
     <!--Sign up-->
     <div class="container-fluid table-responsive-sm">
+        <form action="posts-management.php" method="get">
         <table class="table">
             <caption>List of Images</caption>
             <thead>
@@ -38,6 +39,7 @@ require_once '../../php/user-listing-handler.php';
             <?php renderListing(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'posts.csv'); ?>
             </tbody>
         </table>
+        </form>
     </div>
 </main>
 <!--footer-->

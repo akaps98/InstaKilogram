@@ -4,9 +4,9 @@ function readCSVFile($filePath, $condition = '')
 {
     $data = [];
     $content = fopen($filePath, 'r');
-    $ite = 0;
     if (!$content) return false;
     while (($row = fgetcsv($content)) !== false) {
+        if ($row[1]=== 'deleted') continue;
         if(array(null) !== $row){
             $data[] = $row;
         }
@@ -18,14 +18,8 @@ function readCSVFile($filePath, $condition = '')
 function readFileWithConditions($filePath, $index, $condition, $index1 = 0, $condition1 = '')
 {
     $data = [];
-    $ite = 0;
     $content = fopen($filePath, 'r');
     while (($row = fgetcsv($content)) !== false) {
-
-        if ($ite === 0) {
-            $ite++;
-            continue;
-        }
         if ($index && $condition && $index1 && $condition1) {
             if ($row[$index1] !== $condition1 || $row[$index] !== $condition) continue;
         } else if ($index && $condition) {
@@ -57,10 +51,10 @@ function getPostForUser($filePath)
 
 function getNextRow($filePath)
 {
-    $ite = 0;
+    $ite = [];
     $content = fopen($filePath, 'r');
     while (($row = fgetcsv($content)) !== false) {
-        $ite++;
+        $ite=intval($row[0])  + 1;
     }
     return $ite;
 
@@ -122,7 +116,7 @@ function getUsers($filePath, $name){
         }
     }
     if(count($matches)){
-        return $matches;
+        return array_reverse($matches);
     }
     return null;
     
@@ -162,9 +156,32 @@ function getListOfPost()
     return getPosts($_SESSION['userType']);
 }
 
-function getSharablePosts(){
-
+function updateCSVRow($otherId, $newContent=null){
+    $target = $newContent ? 'posts.csv' : 'users.csv';
+    $filePath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR. 'data'. DIRECTORY_SEPARATOR . $target;
+    $content = readCSVFile($filePath);
+        for ($x=0; $x < count($content); $x++){
+            if ($content[$x][0] === $otherId){
+                if (!$newContent) {
+                    $content[$x][4] = password_hash('123456', PASSWORD_BCRYPT);
+                } else {
+                    $content[$x] = [$otherId, $newContent];
+                }
+            }
+        }
+    $file = fopen($filePath, 'w+');
+    if (!$file) {
+        return false;
+    }
+    $content = array_reverse($content);
+    for ($x=0; $x < count($content); $x++) {
+        var_dump($content[$x]);
+        fputcsv($file, $content[$x]);
+    }
+    fclose($file);
 }
+
+
 
 
 ?>

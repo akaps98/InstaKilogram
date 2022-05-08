@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../../php/user-listing-handler.php';
+directToUserProfile();
 
 ?>
 
@@ -25,7 +26,7 @@ require_once __DIR__ . '/../../php/user-listing-handler.php';
     
     <div class="container-fluid table-responsive-sm">
         <form action="user-management.php" method="get">
-            <input type="text" name="q-name" id="search-user" placeholder = "Search user"></input>
+            <input type="text" name="q-name" id="search-user" placeholder = "Search user">
             <input type="submit" value="submit" >
         </form>
         <form action="user-management.php" method="get">     

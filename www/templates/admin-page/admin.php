@@ -1,7 +1,4 @@
 <?php
-if(!isset($_SESSION)) {
-    session_start();
-}
 require_once "../../php/auth-handler.php";
 require_once "../../php/upload-handler.php";
 $user = getUserById($_SESSION['logged']);

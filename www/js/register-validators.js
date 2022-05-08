@@ -104,7 +104,7 @@ function check_email(){
     if(input_email != ""){
         let valid = pattern.test(input_email);
         if(valid){
-            document.querySelector("#check_email").innerHTML = "All good to go!";
+            document.querySelector("#check_email").innerHTML = "Email has valid pattern!";
         }else{
             document.querySelector("#check_email").innerHTML = "Your email is not quite right";
         }

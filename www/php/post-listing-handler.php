@@ -12,7 +12,7 @@ function postListing()
         $title = $items[$x][3];
         $description = $items[$x][4];
         $createdDate = $items[$x][5];
-        echo '<div class="card">';
+        echo '<div class="card col-sm-12 col-md-8 col-xl-4 col-lg-3">';
         echo '<img class="card-img-top" style="object-fit: none;object-position: center;height: 300px;width: 100%;" src="data:image/jpg;charset=utf8;base64,' . $img
             . '" alt="Card image cap">';
         echo '<div class="card-body">';

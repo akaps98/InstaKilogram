@@ -14,8 +14,6 @@ function isValidEmail()
     $email = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = validateInput($_POST['email-add']);
-
-
         if ($email){
             //Aligned with RFC 5322 
             if(!preg_match('/^(?!(?>(?1)"?(?>\\\[ -~]|[^"])"?(?1)){255,})(?!(?>(?1)"?(?>\\\[ -~]|[^"])"?(?1)){65,}@)((?>(?>(?>((?>(?>(?>\x0D\x0A)?[\t ])+|(?>[\t ]*\x0D\x0A)?[\t ]+)?)(\((?>(?2)(?>[\x01-\x08\x0B\x0C\x0E-\'*-\[\]-\x7F]|\\\[\x00-\x7F]|(?3)))*(?2)\)))+(?2))|(?2))?)([!#-\'*+\/-9=?^-~-]+|"(?>(?2)(?>[\x01-\x08\x0B\x0C\x0E-!#-\[\]-\x7F]|\\\[\x00-\x7F]))*(?2)")(?>(?1)\.(?1)(?4))*(?1)@(?!(?1)[a-z\d-]{64,})(?1)(?>([a-z\d](?>[a-z\d-]*[a-z\d])?)(?>(?1)\.(?!(?1)[a-z\d-]{64,})(?1)(?5)){0,126}|\[(?:(?>IPv6:(?>([a-f\d]{1,4})(?>:(?6)){7}|(?!(?:.*[a-f\d][:\]]){8,})((?6)(?>:(?6)){0,6})?::(?7)?))|(?>(?>IPv6:(?>(?6)(?>:(?6)){5}:|(?!(?:.*[a-f\d]:){6,})(?8)?::(?>((?6)(?>:(?6)){0,4}):)?))?(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)(?>\.(?9)){3}))\])(?1)$/isD',$email)){
@@ -137,7 +135,7 @@ function register()
             writeToFile($userPath, [$id, $fName.' '. $lName, $gender, $email, $password_hashed, 'user', $image]);
             echo "Register Sucessfully";
         }else{
-            echo "False to Register";
+            echo " Fail to Register";
         }
     }
 }
@@ -152,13 +150,11 @@ function login($isAdminLogin=false)
             if (password_verify($pw, $result[4])) {
                 setUserSession($result);
                 if(!$isAdminLogin){
-                    header("Location: ../user/profile.php");
+                    header("Location: " . ".." . DIRECTORY_SEPARATOR ."user" . DIRECTORY_SEPARATOR . "profile.php");
                 }else{
                     header("Location: ../admin-page/admin.php");
                 }
-                echo "Login Successfully! ";
-
-                exit;
+                exit();
             }else{
                 echo "Wrong password";
             }
@@ -186,5 +182,29 @@ function destroyUserSession(){
     unset($_SESSION['logged']);
     unset($_SESSION['userType']);
 }
+
+function checkViewOtherPermission(){
+    return isset($_SESSION['logged']) &&  $_SESSION['userType'] === 'admin';
+}
+
+function getOtherId($paramName){
+    if (checkViewOtherPermission()) {
+        $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        $url_components = parse_url($url);
+        if (isset($url_components['query'])) {
+            parse_str($url_components['query'], $params);
+            if (isset($params[$paramName])) {
+                return $params[$paramName];
+            }
+        }
+    }
+}
+
+function resetOtherPassword($otherId, &$userMessage){
+    if (checkViewOtherPermission()){
+        $userMessage = 'User Password of user '. $otherId.' has been reset to 123456';
+        updateCSVRow($otherId);
+    }
+    }
 
 ?>

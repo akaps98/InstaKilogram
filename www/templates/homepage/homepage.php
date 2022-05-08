@@ -11,6 +11,6 @@ require_once __DIR__ . '/../../php/post-listing-handler.php';
 </style>
 <!--    TODO: add image listing-->
 <h1 class="text-center"> Welcome To InstaKilogram</h1>
-<div class="card-group text-center">
+<div class="container-fluid row">
     <?php postListing(); ?>
 </div>

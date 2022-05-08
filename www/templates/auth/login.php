@@ -1,7 +1,8 @@
 <?php
+require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'session-handler.php';
 require_once '../../php/auth-handler.php';
+login();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,6 @@ require_once '../../php/auth-handler.php';
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/auth/register.css">
-
 </head>
 <body>
 <header>
@@ -40,10 +40,11 @@ require_once '../../php/auth-handler.php';
                         <label for="password">Password</label>
                     </div>
                 </div>
+                <div class="d-flex flex-column">
                 <a href="<?= navigate('/templates/auth/register.php') ?>"> Do not have password? Register now! </a>
-                <h3> <?php login()?></h3>
                 <button class="btn btn-primary btn-lg" id="login" type="submit">Login
                 </button>
+                </div>
             </form>
         </div>
     </div>

@@ -1,5 +1,7 @@
 <?php
-require_once '..'.DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'php' . DIRECTORY_SEPARATOR.'auth-handler.php';
+require_once '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'session-handler.php';
+require_once '..'. DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'php' . DIRECTORY_SEPARATOR.'navigation-handler.php';
+require_once '..'. DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'php' . DIRECTORY_SEPARATOR.'auth-handler.php';
 ?>
 
 <!DOCTYPE html>
