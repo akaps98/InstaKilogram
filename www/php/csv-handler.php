@@ -172,7 +172,7 @@ function updateCSVRow($otherId, $newContent=null){
     while (($row = fgetcsv($content)) !== false) {
         if ($row[0] === $otherId){
             if (!$newContent) {
-                $row[4] = password_hash('Palomino2!', PASSWORD_BCRYPT);
+                $row[4] = password_hash('Palomino1!', PASSWORD_BCRYPT);
             } else {
                 $row = array($otherId,'has_deleted');
             }
