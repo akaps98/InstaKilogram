@@ -2,7 +2,7 @@
 if (!isset($_SESSION)) {
     session_start();
 }
-require_once "..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."php".DIRECTORY_SEPARATOR."upload-handler.php";
+require_once __DIR__. DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."php".DIRECTORY_SEPARATOR."upload-handler.php";
 getUploadInput();
 
 ?>
@@ -23,7 +23,7 @@ getUploadInput();
 <body>
 <header class="header header-container">
     <!--start nav bar -->
-    <?php include('../common-share/header.php')?>
+    <?php include(__DIR__. DIRECTORY_SEPARATOR.'../common-share/header.php')?>
     <!--    end nav bar-->
 </header>
 <main>
@@ -55,6 +55,6 @@ getUploadInput();
     </div>
 </main>
 <footer>
-    <?php include('..'.DIRECTORY_SEPARATOR.'common-share'.DIRECTORY_SEPARATOR.'footer.php')?>
+    <?php include(__DIR__. DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'common-share'.DIRECTORY_SEPARATOR.'footer.php')?>
 </footer>
 </body>
