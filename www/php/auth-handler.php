@@ -154,7 +154,7 @@ function login($isAdminLogin=false)
                 if(!$isAdminLogin){
                     header("Location: " . ".." . DIRECTORY_SEPARATOR ."user" . DIRECTORY_SEPARATOR . "profile.php");
                 }else{
-                    header("Location: ../admin-page/admin.php");
+                    header("Location: ..".DIRECTORY_SEPARATOR."admin-page".DIRECTORY_SEPARATOR."admin.php");
                 }
                 exit();
             }else{
