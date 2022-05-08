@@ -1,7 +1,7 @@
 <?php
-require_once "../../php/session-handler.php";
-require_once "../../php/auth-handler.php";
-require_once "../../php/upload-handler.php";
+require_once "..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."php".DIRECTORY_SEPARATOR."session-handler.php";
+require_once "..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."php".DIRECTORY_SEPARATOR."auth-handler.php";
+require_once "..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."php".DIRECTORY_SEPARATOR."upload-handler.php";
 $otherId = getOtherId('user');
 $message = '';
 if ($otherId) {
@@ -118,20 +118,20 @@ if (isset($_POST['reset'])) {
         </div>
         <?php if (!$otherId or $otherId === $_SESSION['logged']): ?>
         <div class="col-sm-12 col-md-6">
-            <button class="btn btn-primary"><a class="btn-logout" href='<?= navigate("") . "/index.php?logout=true" ?>'> Logout From This
+            <button class="btn btn-primary"><a class="btn-logout" href='<?= navigate("") . DIRECTORY_SEPARATOR . "index.php?logout=true" ?>'> Logout From This
                     User Session </a></button>
         </div>
         <?php else: ?>
         <div class="col-sm-12 col-md-6">
-            <h3> <? echo $message ?> </h3>
+            <h3> <?php echo $message ?> </h3>
             <form method="post" action="profile.php?user=<?=$otherId?>">
-            <button class="btn btn-primary"  type="submit" name="reset"> Reset User Password </button>
+            <button class="btn btn-warning"  type="submit" name="reset"> Reset User Password </button>
             </form>
         </div>
         <?php endif; ?>
     </main>
     <!--footer-->
     <footer>
-        <?php require('../common-share/footer.php'); ?>
+        <?php require('..'.DIRECTORY_SEPARATOR.'common-share'.DIRECTORY_SEPARATOR.'footer.php'); ?>
     </footer>
     </body>

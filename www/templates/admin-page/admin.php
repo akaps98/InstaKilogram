@@ -1,6 +1,6 @@
 <?php
-require_once "../../php/auth-handler.php";
-require_once "../../php/upload-handler.php";
+require_once "..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."php".DIRECTORY_SEPARATOR."auth-handler.php";
+require_once "..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."php".DIRECTORY_SEPARATOR."upload-handler.php";
 $user = getUserById($_SESSION['logged']);
 ?>
 
@@ -17,7 +17,7 @@ $user = getUserById($_SESSION['logged']);
 </head>
 <body>
 <header>
-    <?php require('../common-share/header.php'); ?>
+    <?php require('..'.DIRECTORY_SEPARATOR.'common-share'.DIRECTORY_SEPARATOR.'header.php'); ?>
 </header>
 <hr size="3">
 <main style="margin-top:33px;">
@@ -33,6 +33,6 @@ $user = getUserById($_SESSION['logged']);
 </main>
 <!--footer-->
 <footer>
-    <?php require('../common-share/footer.php'); ?>
+    <?php require('..'.DIRECTORY_SEPARATOR.'common-share'.DIRECTORY_SEPARATOR.'footer.php'); ?>
 </footer>
 </body>

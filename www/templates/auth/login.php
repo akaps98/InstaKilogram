@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'session-handler.php';
-require_once '../../php/auth-handler.php';
+require_once '..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'php'.DIRECTORY_SEPARATOR.'auth-handler.php';
 login();
 ?>
 <!DOCTYPE html>
@@ -51,6 +51,6 @@ login();
 </main>
 <!--footer-->
 <footer>
-    <?php require('../common-share/footer.php'); ?>
+    <?php require('..'.DIRECTORY_SEPARATOR.'common-share'.DIRECTORY_SEPARATOR.'footer.php'); ?>
 </footer>
 </body>

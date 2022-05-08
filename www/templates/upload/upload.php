@@ -2,7 +2,7 @@
 if (!isset($_SESSION)) {
     session_start();
 }
-require_once "../../php/upload-handler.php";
+require_once "..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."php".DIRECTORY_SEPARATOR."upload-handler.php";
 getUploadInput();
 
 ?>
@@ -55,6 +55,6 @@ getUploadInput();
     </div>
 </main>
 <footer>
-    <?php include('../common-share/footer.php')?>
+    <?php include('..'.DIRECTORY_SEPARATOR.'common-share'.DIRECTORY_SEPARATOR.'footer.php')?>
 </footer>
 </body>

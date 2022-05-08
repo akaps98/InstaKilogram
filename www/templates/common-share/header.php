@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . "/../../php/auth-handler.php";
-require_once __DIR__ . "/../../php/navigation-handler.php";
+require_once __DIR__ . DIRECTORY_SEPARATOR. "..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."php".DIRECTORY_SEPARATOR."auth-handler.php";
+require_once __DIR__ . DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."php".DIRECTORY_SEPARATOR."navigation-handler.php";
 if (isset($_GET['logout'])) {
     destroyUserSession();
 }
@@ -24,21 +24,21 @@ if (isset($_GET['logout'])) {
                         Authentication
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="<?= navigate('/templates/auth/login.php') ?>">Login</a>
+                        <a class="dropdown-item" href="<?= navigate(DIRECTORY_SEPARATOR. 'templates'.DIRECTORY_SEPARATOR.'auth'.DIRECTORY_SEPARATOR.'login.php') ?>">Login</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="<?= navigate('/templates/auth/register.php') ?>">Register</a>
+                        <a class="dropdown-item" href="<?= navigate(DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'auth'.DIRECTORY_SEPARATOR.'register.php') ?>">Register</a>
                     </div>
                 </li>
             <?php else: ?>
-                <a class="nav-link" href="<?= navigate('/templates/user/profile.php') ?>">My Account</a>
+                <a class="nav-link" href="<?= navigate(DIRECTORY_SEPARATOR .'templates'.DIRECTORY_SEPARATOR.'user'.DIRECTORY_SEPARATOR.'profile.php') ?>">My Account</a>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= navigate('/templates/upload/upload.php') ?>">Upload</a>
+                    <a class="nav-link" href="<?= navigate(DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'upload'.DIRECTORY_SEPARATOR.'upload.php') ?>">Upload</a>
                 </li>
                 <?php if ($_SESSION['userType'] === 'admin'): ?>
-                    <a class="nav-link" href="<?= navigate('/templates/admin-page/user-management.php') ?>">User
+                    <a class="nav-link" href="<?= navigate(DIRECTORY_SEPARATOR. 'templates'.DIRECTORY_SEPARATOR.'admin-page'.DIRECTORY_SEPARATOR.'user-management.php') ?>">User
                         Management</a>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= navigate('/templates/admin-page/posts-management.php') ?>">Image
+                        <a class="nav-link" href="<?= navigate(DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'admin-page'.DIRECTORY_SEPARATOR.'posts-management.php') ?>">Image
                             Management</a>
                     </li>
                 <?php else: ?>
@@ -51,7 +51,7 @@ if (isset($_GET['logout'])) {
                 <li class="nav-item"></li>
             <?php else: ?>
                 <li class="nav-item">
-                    <a class="nav-link" href='<?= navigate("") . "/index.php?logout=true" ?>'>Logout</a>
+                    <a class="nav-link" href='<?= navigate("") . DIRECTORY_SEPARATOR."index.php?logout=true" ?>'>Logout</a>
                 </li>
             <?php endif; ?>
         </ul>

@@ -49,6 +49,6 @@ require_once '../../php/auth-handler.php';
 </main>
 <!--footer-->
 <footer>
-    <?php require('../common-share/footer.php'); ?>
+    <?php require('..'.DIRECTORY_SEPARATOR.'common-share'.DIRECTORY_SEPARATOR.'footer.php'); ?>
 </footer>
 </body>

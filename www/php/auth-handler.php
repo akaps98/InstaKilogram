@@ -145,7 +145,9 @@ function login($isAdminLogin=false)
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = validateInput($_POST['email-add']);
         $pw = validateInput($_POST['password']);
-        $result = getUser( __DIR__ . '\..\data\users.csv', $email, $isAdminLogin);
+        echo $email;
+        echo $pw;
+        $result = getUser( __DIR__ . DIRECTORY_SEPARATOR . '..'.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'users.csv', $email, $isAdminLogin);
         if($result){
             if (password_verify($pw, $result[4])) {
                 setUserSession($result);
@@ -202,7 +204,7 @@ function getOtherId($paramName){
 
 function resetOtherPassword($otherId, &$userMessage){
     if (checkViewOtherPermission()){
-        $userMessage = 'User Password of user '. $otherId.' has been reset to 123456';
+        $userMessage = 'User Password of user '. $otherId.' has been reset to Palomino1!';
         updateCSVRow($otherId);
     }
     }

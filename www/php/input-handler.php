@@ -6,8 +6,4 @@ function validateInput($data)
     return htmlspecialchars($data);
 }
 
-function isValidImage($image){
-
-}
-
 ?>

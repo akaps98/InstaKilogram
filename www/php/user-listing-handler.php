@@ -36,7 +36,7 @@ function printUsers($data, $canDelete=false)
         $buttonContent = "Delete";
         $name = "delete-post";
     }
-    for ($x = 0; $x < count($data) - 1; $x++) {
+    for ($x = 0; $x < count($data); $x++) {
         $users = "<tr class = 'user-data'><td scope='row'>" . $data[$x][0] . "</td>
         <td scope='col'>" . $data[$x][1] . "</td>
         <td scope='col'>" . $data[$x][3] . "</td>
@@ -54,7 +54,7 @@ function directToUserProfile()
         if (!$uid) {
             echo "Error can't go to profile";
         } else {
-            header("Location: ../user/profile.php?user=" . $uid);
+            header("Location: ..".DIRECTORY_SEPARATOR."user".DIRECTORY_SEPARATOR."profile.php?user=" . $uid);
             exit();
         }
     }

@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/csv-handler.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR.'csv-handler.php';
 
 function postListing()
 {

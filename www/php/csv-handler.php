@@ -4,9 +4,13 @@ function readCSVFile($filePath, $condition = '')
 {
     $data = [];
     $content = fopen($filePath, 'r');
+    $ite = 0;
     if (!$content) return false;
     while (($row = fgetcsv($content)) !== false) {
-        if ($row[1]=== 'deleted') continue;
+        if ($row[1]=== 'has_deleted' || $ite === 0) {
+            $ite++;
+            continue;
+        }
         if(array(null) !== $row){
             $data[] = $row;
         }
@@ -19,7 +23,11 @@ function readFileWithConditions($filePath, $index, $condition, $index1 = 0, $con
 {
     $data = [];
     $content = fopen($filePath, 'r');
+    $ite = 0;
     while (($row = fgetcsv($content)) !== false) {
+        if ($ite===0 || $row[1]=== 'has_deleted') {
+            $ite++; continue;
+        }
         if ($index && $condition && $index1 && $condition1) {
             if ($row[$index1] !== $condition1 || $row[$index] !== $condition) continue;
         } else if ($index && $condition) {
@@ -37,7 +45,7 @@ function getPostForUser($filePath)
     $content = fopen($filePath, 'r');
     if (!$content) return false;
     while (($row = fgetcsv($content)) !== false) {
-        if ($ite === 0) {
+        if ($ite === 0 || $row[1]=== 'has_deleted') {
             $ite++;
             continue;
         }
@@ -51,10 +59,10 @@ function getPostForUser($filePath)
 
 function getNextRow($filePath)
 {
-    $ite = [];
+    $ite = 0;
     $content = fopen($filePath, 'r');
     while (($row = fgetcsv($content)) !== false) {
-        $ite=intval($row[0])  + 1;
+        $ite++;
     }
     return $ite;
 
@@ -119,7 +127,7 @@ function getUsers($filePath, $name){
         return array_reverse($matches);
     }
     return null;
-    
+
 }
 
 function getUserById($id, $filePath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'data' .DIRECTORY_SEPARATOR. 'users.csv')
@@ -157,31 +165,31 @@ function getListOfPost()
 }
 
 function updateCSVRow($otherId, $newContent=null){
+    $data = [];
     $target = $newContent ? 'posts.csv' : 'users.csv';
     $filePath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR. 'data'. DIRECTORY_SEPARATOR . $target;
-    $content = readCSVFile($filePath);
-        for ($x=0; $x < count($content); $x++){
-            if ($content[$x][0] === $otherId){
-                if (!$newContent) {
-                    $content[$x][4] = password_hash('123456', PASSWORD_BCRYPT);
-                } else {
-                    $content[$x] = [$otherId, $newContent];
-                }
+    $content = fopen($filePath, 'r');
+    while (($row = fgetcsv($content)) !== false) {
+        if ($row[0] === $otherId){
+            if (!$newContent) {
+                $row[0][4] = password_hash('Palomino1!', PASSWORD_BCRYPT);
+            } else {
+                $row = array($otherId,'has_deleted');
             }
         }
+        if(array(null) !== $row){
+            $data[] = $row;
+        }
+
+    }
     $file = fopen($filePath, 'w+');
     if (!$file) {
         return false;
     }
-    $content = array_reverse($content);
-    for ($x=0; $x < count($content); $x++) {
-        var_dump($content[$x]);
-        fputcsv($file, $content[$x]);
+    for ($x=0; $x < count($data); $x++) {
+        fputcsv($file, $data[$x]);
     }
     fclose($file);
 }
-
-
-
 
 ?>

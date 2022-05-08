@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__. "/input-handler.php";
-require_once __DIR__. "/csv-handler.php";
+require_once __DIR__. DIRECTORY_SEPARATOR."input-handler.php";
+require_once __DIR__. DIRECTORY_SEPARATOR."csv-handler.php";
 function getUploadInput()
 {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {

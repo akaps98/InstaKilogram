@@ -1,7 +1,7 @@
 <?php
 require_once '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'session-handler.php';
-require_once '..'. DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'php' . DIRECTORY_SEPARATOR.'navigation-handler.php';
-require_once '..'. DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'php' . DIRECTORY_SEPARATOR.'auth-handler.php';
+require_once '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'navigation-handler.php';
+require_once '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'auth-handler.php';
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@ require_once '..'. DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'php' . DIRECTO
 </head>
 <body>
 <header>
-    <?php require('../common-share/header.php'); ?>
+    <?php require('..' . DIRECTORY_SEPARATOR . 'common-share' . DIRECTORY_SEPARATOR . 'header.php'); ?>
 </header>
 <hr size="3">
 <main style="margin-top:33px;">
@@ -30,10 +30,11 @@ require_once '..'. DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'php' . DIRECTO
                 <!--Input email-->
                 <div class="input-email">
                     <div class="input-box">
-                        <input id="email-add" name="email-add" type="email" placeholder="Email address" onchange="check_email();">
+                        <input id="email-add" name="email-add" type="email" placeholder="Email address"
+                               onchange="check_email();">
                         <label for="email-add">Email address</label>
                     </div>
-                    <span id= "check_email"></span>
+                    <span id="check_email"></span>
                     <?php isValidEmail() ?>
                     <!--check email validation(unique)-->
                 </div>
@@ -86,9 +87,10 @@ require_once '..'. DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'php' . DIRECTO
                     <span id="check-lname"></span>
                     <?php isValidLastName() ?>
                 </div>
-                <a href="<?= navigate('/templates/auth/login.php') ?>"> Already have one account? Login now! </a>
-                <h3> <?php register()?></h3>
-                <button class="btn btn-primary btn-lg" id="signup" type="submit" >Sign Up
+                <a href="<?= navigate(DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'auth' . DIRECTORY_SEPARATOR . 'login.php') ?>">
+                    Already have one account? Login now! </a>
+                <h3> <?php register() ?></h3>
+                <button class="btn btn-primary btn-lg" id="signup" type="submit">Sign Up
                 </button>
             </form>
         </div>
@@ -96,6 +98,6 @@ require_once '..'. DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'php' . DIRECTO
 </main>
 <!--footer-->
 <footer>
-    <?php require('../common-share/footer.php'); ?>
+    <?php require('..' . DIRECTORY_SEPARATOR . 'common-share' . DIRECTORY_SEPARATOR . 'footer.php'); ?>
 </footer>
 </body>
