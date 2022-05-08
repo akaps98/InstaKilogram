@@ -172,7 +172,7 @@ function updateCSVRow($otherId, $newContent=null){
     while (($row = fgetcsv($content)) !== false) {
         if ($row[0] === $otherId){
             if (!$newContent) {
-                $row[0][4] = password_hash('Palomino1!', PASSWORD_BCRYPT);
+                $row[4] = password_hash('Palomino2!', PASSWORD_BCRYPT);
             } else {
                 $row = array($otherId,'has_deleted');
             }
@@ -182,13 +182,14 @@ function updateCSVRow($otherId, $newContent=null){
         }
 
     }
-    $file = fopen($filePath, 'w+');
+    $file = fopen($filePath, 'w');
     if (!$file) {
         return false;
     }
     for ($x=0; $x < count($data); $x++) {
         fputcsv($file, $data[$x]);
     }
+    fclose($content);
     fclose($file);
 }
 

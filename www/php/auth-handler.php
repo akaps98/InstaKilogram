@@ -23,7 +23,7 @@ function isValidEmail()
                 global $checkedEmail;
                 $checkedEmail = true;
                 //Check identical email
-                $data = readCSVFile(__DIR__ . '\..\data\users.csv');
+                $data = readCSVFile(__DIR__ . DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'users.csv');
                 for ($x = 1; $x < count($data); $x++) {
                     if (($data[$x][3]) === $email) {
                         echo "Email is already exist, Please choose another one!";;
