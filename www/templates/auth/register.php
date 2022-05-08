@@ -1,7 +1,7 @@
 <?php
-require_once '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'session-handler.php';
-require_once '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'navigation-handler.php';
-require_once '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'auth-handler.php';
+require_once __DIR__. DIRECTORY_SEPARATOR. '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'session-handler.php';
+require_once __DIR__. DIRECTORY_SEPARATOR.'..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'navigation-handler.php';
+require_once __DIR__. DIRECTORY_SEPARATOR.'..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'auth-handler.php';
 ?>
 
 <!DOCTYPE html>
@@ -98,6 +98,6 @@ require_once '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'php' . D
 </main>
 <!--footer-->
 <footer>
-    <?php require('..' . DIRECTORY_SEPARATOR . 'common-share' . DIRECTORY_SEPARATOR . 'footer.php'); ?>
+    <?php require(__DIR__. DIRECTORY_SEPARATOR.'..' . DIRECTORY_SEPARATOR . 'common-share' . DIRECTORY_SEPARATOR . 'footer.php'); ?>
 </footer>
 </body>
