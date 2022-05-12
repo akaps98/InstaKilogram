@@ -91,7 +91,7 @@ if (isset($_POST['reset'])) {
                         </div>
                     </div>
                 </div>
-
+<?php editProfile($user)?>
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -105,7 +105,7 @@ if (isset($_POST['reset'])) {
                             <div class="modal-body">
                                 <img src="data:image/jpg;charset=utf8;base64,<?php echo $user[6] ?>" id="output"
                                      width="200"/>
-                                <input id="file" type="file" onchange="loadFile(event)"/>
+                                <input type="file" id="image" name="image" onfocusout="check_file_extention();" accept="image/*">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
