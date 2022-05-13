@@ -1,127 +1,42 @@
 <?php require_once __DIR__ .'/../../php/navigation-handler.php' ?>
-<footer class="text-center text-lg-start bg-light text-muted">
-    <!-- Section: Social media -->
-    <section
-            class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
-    >
-        <!-- Right -->
-        <div>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-google"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-github"></i>
-            </a>
-        </div>
-        <!-- Right -->
-    </section>
-    <!-- Section: Social media -->
-
-    <!-- Section: Links  -->
-    <section class="">
-        <div class="container text-center text-md-start mt-5">
-            <!-- Grid row -->
-            <div class="row mt-3">
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <!-- Content -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>Company name
-                    </h6>
-                    <p>
-                        Here you can use rows and columns to organize your footer content. Lorem ipsum
-                        dolor sit amet, consectetur adipisicing elit.
-                    </p>
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                    <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        Products
-                    </h6>
-                    <p>
-                        <a href="#!" class="text-reset">Angular</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">React</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Vue</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Laravel</a>
-                    </p>
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                    <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        Useful links
-                    </h6>
-                    <p>
-                        <a href="#!" class="text-reset">Pricing</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Settings</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Orders</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Help</a>
-                    </p>
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                    <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        Contact
-                    </h6>
-                    <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
-                    <p>
-                        <i class="fas fa-envelope me-3"></i>
-                        info@example.com
-                    </p>
-                    <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-                    <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
-                </div>
-                <!-- Grid column -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script>
+    <?php 
+        include_once __DIR__.'/../../js/footer.js';
+    ?>
+</script>
+<style>
+    <?php 
+        include_once __DIR__.'/../../css/footer.css';
+    ?>
+</style>
+<hr size="3">
+<div class="container">
+    <div class="row justify-content-center" id="content">
+        <div class="col-md-9 text-center">
+        <ul class="list-unstyled nav-links mb-5">
+            <li><a href="/templates/footer-contents/about.php">About</a></li>|
+            <li><a href="javascript:void(0);" onclick="overlay1();">Copyright</a></li>|
+            <li><a href="/templates/footer-contents/privacy.php">Privacy</a></li>|
+            <li><a href="javascript:void(0);" onclick="overlay2();">Help</a></li>
+        </ul>
+        <div class="popup" id="popup_copyright" onclick="off()">
+            <div class="popup_text">
+              <p class="mb-0"><small>Instakilogram &copy; 2022</small><br><span>All rights reserved.</span></p>
             </div>
-            <!-- Grid row -->
         </div>
-    </section>
-    <!-- Section: Links  -->
-    <!-- Copyright -->
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-        © 2022 Copyright:
-        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        <div class="popup" id="popup_help" onclick="off()">
+            <div class="popup_text">
+                <h1 class="helping_text">Instagram is an SNS website that communicates with people by posting pictures.<br> You can use freely after signing up for membership.<br>
+                If you have any questions, please email to lgtwins0302@gmail.com.</h1>
+            </div>
+        </div>
+            <div class="copyright">
+                <p class="mb-0"><small>&copy; 2022. Instakilogram. All Rights Reserved.</small></p>
+            </div>
+        </div>
     </div>
-    <!-- Copyright -->
-    <script>
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
-        }
-    </script>
-
-</footer>
+</div>
 <div id="cookieNotice" class="container-fluid bg-warning" style="width: 100vw; position: fixed; bottom: 0; left: 0">
     <h2> We value your policy </h2>
     <h6 style="color: white"> We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic.

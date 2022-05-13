@@ -1,0 +1,39 @@
+main {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+li {
+    list-style-type: none;
+    text-align: left;
+}
+
+.about_text {
+    text-align: center;
+}
+
+.about_content {
+    text-align: center;
+}
+
+.content {
+    border: 1px solid black;
+    text-align: center;
+    margin: 10px;
+    width: 370px;
+}
+
+.profile_pic img {
+    width: 300px;
+    height: 350px;
+    object-fit: fill;
+}
+
+.content, .profile_pic {
+    position: relative;
+    display: inline-block;
+}
