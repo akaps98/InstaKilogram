@@ -12,7 +12,6 @@
 </head>
 <body>
 <header class="header header-container">
-    <h1> Hello it is my new code </h1>
     <!--start nav bar -->
     <?php require_once '.'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'common-share'.DIRECTORY_SEPARATOR.'header.php' ?>
     <!--    end nav bar-->
