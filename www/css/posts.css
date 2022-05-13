@@ -19,6 +19,10 @@
      margin: 16px .400px;
  }
  
+ .card-body {
+   text-align: center;
+ }
+ 
  @media screen and (min-width: 480px) {
      .card-group {
          display: flex;
