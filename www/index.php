@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . DIRECTORY_SEPARATOR .'php' . DIRECTORY_SEPARATOR . 'session-handler.php';?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,24 +13,16 @@
 <body>
 <header class="header header-container">
     <!--start nav bar -->
-    <?php include('./templates/common-share/header_not_log_in.php')?>
-<!--    end nav bar-->
+    <?php require_once '.'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'common-share'.DIRECTORY_SEPARATOR.'header.php' ?>
+    <!--    end nav bar-->
 </header>
 <main>
-    <?php require('./templates/homepage/homepage.php') ?>
+    <div class="container-fluid">
+        <?php require_once '.'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'homepage'.DIRECTORY_SEPARATOR.'homepage.php' ?>
+    </div>
 </main>
 <footer>
-    <?php include('./templates/common-share/footer.php')?>
+    <?php require_once '.'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'common-share'.DIRECTORY_SEPARATOR.'footer.php' ?>
 </footer>
 </body>
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
 </html>
