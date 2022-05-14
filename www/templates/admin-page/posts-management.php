@@ -13,6 +13,7 @@ directToUserProfile()
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/auth/register.css">
+    <link rel="stylesheet" href="../../css/table.css">
 
 </head>
 <body>
@@ -24,7 +25,7 @@ directToUserProfile()
     <!--Sign up-->
     <div class="container-fluid table-responsive-sm">
         <form action="posts-management.php" method="get">
-        <table class="table">
+        <table class="table container">
             <caption>List of Images</caption>
             <thead>
             <tr>
@@ -33,6 +34,7 @@ directToUserProfile()
                 <th scope="col">Title</th>
                 <th scope="col">Privacy</th>
                 <th scope="col">Posted Date</th>
+                <th scope="col">Action</th>
             </tr>
             </thead>
             <tbody>

@@ -41,7 +41,7 @@ login();
                     </div>
                 </div>
                 <div class="d-flex flex-column">
-                <a href="<?= navigate(__DIR__. DIRECTORY_SEPARATOR.'/templates/auth/register.php') ?>"> Do not have password? Register now! </a>
+                <a href="register.php"> Do not have account? Register now! </a>
                 <button class="btn btn-primary btn-lg" id="login" type="submit">Login
                 </button>
                 </div>

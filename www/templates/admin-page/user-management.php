@@ -14,7 +14,7 @@ directToUserProfile();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     
-
+    <link rel="stylesheet" href="../../css/table.css">
 </head>
 <body>
 <header>
@@ -29,16 +29,16 @@ directToUserProfile();
             <input type="text" name="q-name" id="search-user" placeholder = "Search user">
             <input type="submit" value="submit" >
         </form>
-        <form action="user-management.php" method="get">     
+        <form action="user-management.php" method="get">
             <table class="table">
                 <caption>List of users</caption>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Gender</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Action</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Role</th>
+                    <th>Action</th>
                 </tr>
                     <?php renderListing(); ?>
             </table>
