@@ -39,8 +39,7 @@ if (isset($_POST['reset'])) {
     <header>
         <?php require(__DIR__ .DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'common-share'.DIRECTORY_SEPARATOR.'header.php'); ?>
     </header>
-    <hr size="3">
-    <main style="margin-top:33px;" class="row">
+    <main style="margin-top:33px;" class="container d-flex align-items-center flex-column">
         <!--Sign up-->
         <div class="col-sm-12 col-md-6">
             <div class="profile-pic">
@@ -49,6 +48,19 @@ if (isset($_POST['reset'])) {
                          data-toggle="modal" data-target="#exampleModal"/>
                 </div>
             </div>
+            <?php if (!$otherId or $otherId === $_SESSION['logged']): ?>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-primary"><a class="btn-logout" href='<?= navigate("") . DIRECTORY_SEPARATOR . "index.php?logout=true" ?>'> Logout From This
+                            User Session </a></button>
+                </div>
+            <?php else: ?>
+                <div class="d-flex justify-content-center">
+                    <h3> <?php echo $message ?> </h3>
+                    <form method="post" action="profile.php?user=<?=$otherId?>">
+                        <button class="btn btn-warning"  type="submit" name="reset"> Reset User Password </button>
+                    </form>
+                </div>
+            <?php endif; ?>
             <div class="container">
                 <div class="tab-content profile-tab" id="myTabContent">
                     <div class="text-center" role="tabpanel" aria-labelledby="home-tab">
@@ -122,19 +134,7 @@ if (isset($_POST['reset'])) {
                 </div>
             </div>
         </div>
-        <?php if (!$otherId or $otherId === $_SESSION['logged']): ?>
-        <div class="col-sm-12 col-md-6">
-            <button class="btn btn-primary"><a class="btn-logout" href='<?= navigate("") . DIRECTORY_SEPARATOR . "index.php?logout=true" ?>'> Logout From This
-                    User Session </a></button>
-        </div>
-        <?php else: ?>
-        <div class="col-sm-12 col-md-6">
-            <h3> <?php echo $message ?> </h3>
-            <form method="post" action="profile.php?user=<?=$otherId?>">
-            <button class="btn btn-warning"  type="submit" name="reset"> Reset User Password </button>
-            </form>
-        </div>
-        <?php endif; ?>
+
     </main>
     <!--footer-->
     <footer>

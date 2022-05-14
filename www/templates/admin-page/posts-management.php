@@ -19,7 +19,7 @@ directToUserProfile()
 <header>
     <?php require(__DIR__. DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'common-share'.DIRECTORY_SEPARATOR.'header.php'); ?>
 </header>
-<hr size="3">
+
 <main style="margin-top:33px;">
     <!--Sign up-->
     <div class="container-fluid table-responsive-sm">

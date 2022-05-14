@@ -19,7 +19,7 @@
 <header>
     <?php include(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'common-share' . DIRECTORY_SEPARATOR . 'header.php') ?>
 </header>
-<main>
+<main class="container-fluid">
     <div class="title">
         <h1><b>Privacy and Security Policy</b></h1>
     </div>

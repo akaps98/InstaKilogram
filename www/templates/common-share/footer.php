@@ -10,7 +10,7 @@
         include_once __DIR__.'/../../css/footer.css';
     ?>
 </style>
-<hr size="3">
+
 <div class="container">
     <div class="row justify-content-center" id="content">
         <div class="col-md-9 text-center">

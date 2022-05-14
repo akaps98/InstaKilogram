@@ -19,7 +19,7 @@ require_once __DIR__. DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTOR
 <header>
     <?php require(__DIR__. DIRECTORY_SEPARATOR.'../common-share/header.php'); ?>
 </header>
-<hr size="3">
+
 <main style="margin-top:33px;">
     <!--Sign up-->
     <div class="signupbox">
