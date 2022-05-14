@@ -24,7 +24,7 @@ login();
     <div class="signupbox">
         <h2 class="fs-4 fw-bold" id="signup_text">Login</h2>
         <div class="formbox">
-            <form action="login.php" method="post" enctype="multipart/form-data">
+            <form action="login.php" method="post" enctype="multipart/form-data" class="login-box">
                 <!--Input email-->
                 <div class="input-email">
                     <div class="input-box">
@@ -33,7 +33,7 @@ login();
                     </div>
                     <!--check email validation(unique)-->
                 </div>
-                <div class="input-password">
+                <div class="input-password1">
                     <!--Input password-->
                     <div class="input-box">
                         <input id="password" name="password" type="password" placeholder="Password">

@@ -130,3 +130,61 @@ input:focus, input:not(:placeholder-shown){
     border-bottom: solid 1px #8aa1a1;
     outline:none;
 }
+
+@media screen and (min-width: 480px) {
+    /* remain layout as upper part */
+}
+
+@media screen and (min-width: 768px) and (max-width:1023px) {
+    /* remain layout as upper part */
+}
+
+@media screen and (min-width: 1024px) {
+    .input-password {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .first-pw {
+        width: 50%;
+    }
+
+    .second-pw {
+        width: 50%;
+    }
+
+    .input-name {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .first-name {
+        width: 50%;
+    }
+
+    .last-name {
+        width: 50%;
+    }
+
+    .login-box {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .input-email {
+        width: 50%;
+    }
+
+    .input-password1 {
+        width: 50%;
+    }
+}
