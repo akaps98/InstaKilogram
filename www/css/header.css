@@ -1,0 +1,15 @@
+.text-end a{
+    float: right;
+}
+
+@media screen and (max-width: 480px) {
+    .text-end a {
+      float: none;
+      display: block;
+      text-align: left;
+      flex-wrap: wrap;
+    }
+    .container form{
+        width: 100%;
+    }
+}
