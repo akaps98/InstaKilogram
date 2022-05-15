@@ -1,3 +1,4 @@
+
 #profile-image:hover {
 
     opacity: 0.5;
@@ -10,6 +11,21 @@
     color: white;
     text-decoration: none;
 }
+
+.label-field, .infor-field{
+    display: inline-block;
+    width: 45%;
+}
+#button-box{
+    text-align: center;
+}
+#infor-box{
+    margin-bottom: 75px;
+}
+#check-password,#check-valid-pass{
+    display: block;
+}
+
 @media only screen and (min-width: 1024px) {
 
     p,

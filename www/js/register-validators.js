@@ -128,6 +128,21 @@ function check_email(){
     }
 }
 
+function checkResetPassword(event){
+    let input_pass = document.getElementById("password").value;
+    let confirm_pass =document.getElementById("password-confirm").value;
+
+    if(!input_pass ||!confirm_pass) {
+        event.preventDefault();
+        alert("Fail to register. \nPlease fill in the blanks.");
+        if(!input_pass){
+            document.querySelector("#password").style.borderColor = "red"; 
+        }
+        if(!confirm_pass){
+            document.querySelector("#password-confirm").style.borderColor = "red";
+        }
+    }
+}
 
 // if there are any blanks or any invalid information, register will be rejected.
 async function check_signup(event) {

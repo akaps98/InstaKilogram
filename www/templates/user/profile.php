@@ -3,7 +3,6 @@ require_once __DIR__ . DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTO
 require_once __DIR__ .DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."php".DIRECTORY_SEPARATOR."auth-handler.php";
 require_once __DIR__ .DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."php".DIRECTORY_SEPARATOR."upload-handler.php";
 $otherId = getOtherId('user');
-$message = '';
 if ($otherId) {
     $user = getUserById($otherId);
 } else {
@@ -13,11 +12,6 @@ if ($otherId) {
         handleEditProfileImage($userId, $message);
     }
 }
-if (isset($_POST['reset'])) {
-    resetOtherPassword($otherId, $message);
-}
-
-
 
 ?>
 
@@ -32,7 +26,7 @@ if (isset($_POST['reset'])) {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
               integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
               crossorigin="anonymous">
-        <link rel="stylesheet" href="../../css/auth/register.css">
+        <script type="text/javascript" src="../../js/register-validators.js"></script>
         <link rel="stylesheet" href="../../css/profile.css">
     </head>
     <body>
@@ -41,7 +35,7 @@ if (isset($_POST['reset'])) {
     </header>
     <main style="margin-top:33px;" class="container d-flex align-items-center flex-column">
         <!--Sign up-->
-        <div class="col-sm-12 col-md-6">
+        <div id="infor-box">
             <div class="profile-pic">
                 <div class="d-flex justify-content-center align-items-center">
                     <img src="data:image/jpg;charset=utf8;base64,<?php echo $user[6] ?>" id="profile-image" width="200"
@@ -54,85 +48,87 @@ if (isset($_POST['reset'])) {
                             User Session </a></button>
                 </div>
             <?php else: ?>
-                <div class="d-flex justify-content-center">
-                    <h3> <?php echo $message ?> </h3>
-                    <form method="post" action="profile.php?user=<?=$otherId?>">
-                        <button class="btn btn-warning"  type="submit" name="reset"> Reset User Password </button>
+                <div id="button-box">
+                    <form method="post" action="profile.php?user=<?=$otherId?>" onsubmit="checkResetPassword(event)">
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Reset password</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class= label-field><label for="password">Password</label></div>
+                                    <div class="infor-field"><input id="password" name="password" type="password" placeholder="Password" onchange="check_pass();"></div>
+                                    <div id="check-valid-pass"></div>
+                                    <div class= label-field><label for="password-confirm">Confirm password</label></div>
+                                    <div class="infor-field"><input id="password-confirm" name="password-confirm" type="password"
+                                placeholder="Check Password" onchange="check_confirm_pass();"></div>
+                                    <div id="check-password"></div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" name="reset" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php isValidPassword() ?>
                     </form>
+                    
+                    <h3> <?php preResetPassword($otherId) ?> </h3>
+                    <button data-toggle="modal" data-target="#exampleModal" class="btn btn-warning"> Reset User Password </button>
                 </div>
             <?php endif; ?>
-            <div class="container">
-                <div class="tab-content profile-tab" id="myTabContent">
-                    <div class="text-center" role="tabpanel" aria-labelledby="home-tab">
+                <div>
+                    <div>
                         <h2> Your Information </h2>
-                        <div class="container row">
-                            <div class="col-sm-12 col-md-6">
+                        <div>
+                            <div class="label-field">
                                 <label>User Id</label>
                             </div>
-                            <div class="col-sm-12 col-md-6">
+                            <div class="infor-field">
                                 <p><?= $user[0] ?></p>
                             </div>
                         </div>
 
-                        <div class="container row">
-                            <div class="col-sm-12 col-md-6">
+                        <div>
+                            <div class="label-field">
                                 <label>Email</label>
                             </div>
-                            <div class="col-sm-12 col-md-6">
+                            <div class="infor-field">
                                 <p><?= $user[3] ?></p>
                             </div>
                         </div>
-                        <div class="container row">
-                            <div class="col-sm-12 col-md-6">
+                        <div>
+                            <div class="label-field">
                                 <label>Phone</label>
                             </div>
-                            <div class="col-sm-12 col-md-6">
+                            <div class="infor-field">
                                 <p>No Data</p>
                             </div>
                         </div>
-                        <div class="container row">
-                            <div class="col-sm-12 col-md-6">
+                        <div>
+                            <div class="label-field">
                                 <label>Role</label>
                             </div>
-                            <div class="col-sm-12 col-md-6">
+                            <div class="infor-field">
                                 <p><?= $user[5] ?></p>
                             </div>
                         </div>
-                        <div class="container row">
-                            <div class="col-sm-12 col-md-6">
+                        <div>
+                            <div class="label-field">
                                 <label>Password</label>
                             </div>
-                            <div class="col-sm-12 col-md-6">
+                            <div class="infor-field">
                                 <p>hidden password</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <form method="post" action="profile.php" enctype="multipart/form-data">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Edit profile Image</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <img src="data:image/jpg;charset=utf8;base64,<?php echo $user[6] ?>" id="output"
-                                     width="200"/>
-                                <input name="image" required="required" type="file" class="form-control-file" id="image" accept="image/*">
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Save changes</button>
-                            </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
     </main>
