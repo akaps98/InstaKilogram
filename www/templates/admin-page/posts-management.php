@@ -12,7 +12,7 @@ directToUserProfile()
     <title>Admin - User management</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../css/auth/register.css">
+    
     <link rel="stylesheet" href="../../css/table.css">
 
 </head>
@@ -25,22 +25,10 @@ directToUserProfile()
     <!--Sign up-->
     <div class="container-fluid table-responsive-sm">
         <form action="posts-management.php" method="get">
-        <table class="table container">
-            <caption>List of Images</caption>
-            <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Posted By</th>
-                <th scope="col">Title</th>
-                <th scope="col">Privacy</th>
-                <th scope="col">Posted Date</th>
-                <th scope="col">Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php renderListing(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'posts.csv'); ?>
-            </tbody>
-        </table>
+            <div class="row">
+                <?php renderListing(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'posts.csv'); ?>
+            </div>
+        
         </form>
     </div>
 </main>
