@@ -6,7 +6,11 @@ if (isset($_GET['logout'])) {
     destroyUserSession();
 }
 ?>
-
+<style>
+    <?php 
+        include_once __DIR__.'/../../css/header.css';
+    ?>
+</style>
 <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a href="<?= navigate(DIRECTORY_SEPARATOR . 'index.php') ?>"
