@@ -9,97 +9,114 @@ $checkedPassword = false;
 $checkedFirstName = false;
 $CheckedLastName = false;
 $checkedImageExtension =false;
+
 function isValidEmail()
 {
     $email = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        global $checkedEmail;
         $email = validateInput($_POST['email-add']);
         if ($email){
             //Aligned with RFC 5322 
             if(!preg_match('/^(?!(?>(?1)"?(?>\\\[ -~]|[^"])"?(?1)){255,})(?!(?>(?1)"?(?>\\\[ -~]|[^"])"?(?1)){65,}@)((?>(?>(?>((?>(?>(?>\x0D\x0A)?[\t ])+|(?>[\t ]*\x0D\x0A)?[\t ]+)?)(\((?>(?2)(?>[\x01-\x08\x0B\x0C\x0E-\'*-\[\]-\x7F]|\\\[\x00-\x7F]|(?3)))*(?2)\)))+(?2))|(?2))?)([!#-\'*+\/-9=?^-~-]+|"(?>(?2)(?>[\x01-\x08\x0B\x0C\x0E-!#-\[\]-\x7F]|\\\[\x00-\x7F]))*(?2)")(?>(?1)\.(?1)(?4))*(?1)@(?!(?1)[a-z\d-]{64,})(?1)(?>([a-z\d](?>[a-z\d-]*[a-z\d])?)(?>(?1)\.(?!(?1)[a-z\d-]{64,})(?1)(?5)){0,126}|\[(?:(?>IPv6:(?>([a-f\d]{1,4})(?>:(?6)){7}|(?!(?:.*[a-f\d][:\]]){8,})((?6)(?>:(?6)){0,6})?::(?7)?))|(?>(?>IPv6:(?>(?6)(?>:(?6)){5}:|(?!(?:.*[a-f\d]:){6,})(?8)?::(?>((?6)(?>:(?6)){0,4}):)?))?(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)(?>\.(?9)){3}))\])(?1)$/isD',$email)){
                 echo "Email invalid. Please enter again";
+                $checkedEmail = false;
                 return false;
             }else{
-                global $checkedEmail;
-                $checkedEmail = true;
                 //Check identical email
                 $data = readCSVFile(__DIR__ . DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'users.csv');
                 for ($x = 1; $x < count($data); $x++) {
                     if (($data[$x][3]) === $email) {
-                        echo "Email is already exist, Please choose another one!";;
+                        echo "Email is already exist, Please choose another one!";
+                        $checkedEmail = false;
                         return false;
                     }
                 }
+                $checkedEmail = true;
                 return true;
             }
         }else{
             echo "Email cannot be empty!";
+            $checkedEmail = false;
             return false;
         }
     }
+    $checkedEmail = false;
     return false;
 }
 
 function isValidPassword(){
     if($_SERVER["REQUEST_METHOD"] == "POST"){
+        global $checkedPassword;
        $password = validateInput($_POST['password']);
        if($password){
             if(!preg_match('/^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(.{8,20})$/', $password)){
                 echo "Must contain at least 1 lower case letter, 1 upper case letter, 1 digit, and  8 to 20 characters";
+                $checkedPassword = false;
                 return false;
             }else{
+                $checkedPassword = true;
                 return true;
             }
         }else{
             echo "Password can't not be empty";
+            $checkedPassword = false;
             return false;
         }
     }
+    $checkedPassword = false;
     return false;
 }
 
 function isValidFirstName(){
     if($_SERVER["REQUEST_METHOD"] == "POST"){
+        global $checkedFirstName;
         $fname = validateInput($_POST['first-name']);
         if($fname){
             if ( !(strlen($fname) >= 2 && strlen($fname) <= 20)){
                 echo "First name's length must be from 2 to 20 characters";
+                $checkedFirstName = false;
                 return false;
             }else{
-                global $checkedFirstName;
                 $checkedFirstName = true;
                 return true;
             }
         }else{
             echo "First name can't not be empty";
+            $checkedFirstName = false;
             return false;
         }
     }
+    $checkedFirstName = false;
     return false;
 }
 
 function isValidLastName(){
     if($_SERVER["REQUEST_METHOD"] == "POST"){
+        global $CheckedLastName;
         $lname = validateInput($_POST['last-name']);
         if($lname){
             if ( !(strlen($lname) >= 2 && strlen($lname) <= 20)){
                 echo "Last name's length must be from 2 to 20 characters";
+                $CheckedLastName = false;
                 return false;
             }else{
-                global $CheckedLastName;
                 $CheckedLastName = true;
                 return true;
             }
         }else{
             echo "Last name can't not be empty";
+            $CheckedLastName = false;
             return false;
         }
     }
+    $CheckedLastName = false;
     return false;
 }
 
 function isValidFileExtention(){
     if($_SERVER["REQUEST_METHOD"] == "POST"){
+        global $checkedImageExtension;
         $image = $_FILES["image"]["type"];
         if($image){
             $validExtention = array("jpg", "jpeg", "png", "gif");
@@ -119,6 +136,11 @@ function isValidFileExtention(){
 function register()
 {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        global $checkedEmail;
+        global $checkedPassword;
+        global $checkedFirstName;
+        global $CheckedLastName;
+        global $checkedImageExtension;
         $userPath = __DIR__ . '\..\data\users.csv';
         $id = getNextRow($userPath);
         $email = validateInput($_POST['email-add']);
@@ -130,12 +152,12 @@ function register()
         $lName = validateInput($_POST['last-name']);
 
         // Problem when calling these valid function, it will print the error along with "Register Sucessfully"
-        if( isValidEmail() &&  isValidPassword() && isValidFirstName() && isValidLastName() && isValidFileExtention()){
+        if( $checkedEmail &&  $checkedPassword && $checkedFirstName && $CheckedLastName && $checkedImageExtension){
             $password_hashed = password_hash($pw, PASSWORD_BCRYPT);
             writeToFile($userPath, [$id, $fName.' '. $lName, $gender, $email, $password_hashed, 'user', $image]);
             echo "Register Sucessfully";
         }else{
-            echo " Fail to Register";
+            echo "Fail to Register php";
         }
     }
 }

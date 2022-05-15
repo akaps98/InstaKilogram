@@ -3,6 +3,28 @@ let check_len_pw = true;
 let check_len_fname = true;
 let check_len_lname = true;
 
+function resetForm(){
+    document.getElementById("signup-form").reset();
+    checkEmpty();
+    document.querySelector("#check-valid-pass").innerHTML = "";
+    document.getElementById("check-password").innerHTML = "";
+    document.getElementById("check-fname").innerHTML = "";
+    document.getElementById("check-lname").innerHTML = "";
+    document.querySelector("#check_email").innerHTML = "";
+}
+function checkEmpty(){
+    let input_email = document.getElementById("email-add").value;
+    let input_pass = document.getElementById("password").value;
+    let confirm_pass =document.getElementById("password-confirm").value;
+    let input_fname = document.getElementById("first-name").value;
+    let input_lname = document.getElementById("last-name").value;
+    if(!input_email && !input_pass &&!confirm_pass && !input_fname && !input_lname) {
+        document.getElementById("reset-button").style.backgroundColor = "grey";
+    }else{
+        document.getElementById("reset-button").style.backgroundColor = "#0d6efd";
+    }
+}
+
 // check password
 function check_pass() {
     document.querySelector("#password").style.borderBottom = "solid 1px #ccc"; 
@@ -87,11 +109,6 @@ function check_lname() {
             check_len_lname = true;
         }
     }
-}
-function check_file_extention(){
-    let valid_extension = [""]
-    let image = document.querySelector("#image").value;
-    console.log(image.split('.').pop());
 }
 
 function check_email(){

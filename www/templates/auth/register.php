@@ -26,7 +26,7 @@ require_once __DIR__. DIRECTORY_SEPARATOR.'..' . DIRECTORY_SEPARATOR . '..' . DI
     <div class="signupbox">
         <h2 class="fs-4 fw-bold" id="signup_text">Sign Up</h2>
         <div class="formbox">
-            <form action="register.php" method="post" onsubmit="check_signup(event)" enctype="multipart/form-data">
+            <form id="signup-form" action="register.php" method="post" onchange="checkEmpty()" onsubmit="check_signup(event)" enctype="multipart/form-data">
                 <!--Input email-->
                 <div class="input-email">
                     <div class="input-box">
@@ -98,9 +98,9 @@ require_once __DIR__. DIRECTORY_SEPARATOR.'..' . DIRECTORY_SEPARATOR . '..' . DI
                 <a href="<?= navigate(DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'auth' . DIRECTORY_SEPARATOR . 'login.php') ?>">
                     Already have one account? Login now! </a>
                 <h3> <?php register() ?></h3>
-                <button class="btn btn-primary btn-lg" id="signup" type="submit">Sign Up
-                </button>
-            </form>
+                </form>
+                <button form="signup-form" class="btn btn-primary btn-lg" id="signup" type="submit">Sign Up</button>
+                <button class="btn btn-primary btn-lg" id="reset-button" onclick="resetForm();">Reset</button>
         </div>
     </div>
 </main>

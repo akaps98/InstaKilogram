@@ -64,8 +64,11 @@ input {
     margin: auto;
 }
 
-#signup {
+#signup,#reset-button {
     margin-top: 25px;
+}
+#reset-button{
+    background-color: grey;
 }
 
 .input-box {
