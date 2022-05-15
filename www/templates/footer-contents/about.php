@@ -67,12 +67,12 @@
         <div class="content">
             <h2>Vu Viet Minh</h2>
             <div class="profile_pic">
-                <img src="../../assets/">
+                <img src="../../assets/viet.jpg">
             </div>
             <ul>
-                <li>Date of Birth: 02/03/1998</li>
+                <li>Date of Birth: 08/10/2000</li>
                 <li>Student ID: S3790708</li>
-                <li>Hobbies: Online Games | Watching Baseball</li>
+                <li>Hobbies: Coding | Playing Guitar</li>
             </ul>
         </div>
     </div>
