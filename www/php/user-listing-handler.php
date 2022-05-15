@@ -37,12 +37,13 @@ function printUsers($data, $canDelete=false)
         $name = "delete-post";
     }
     for ($x = 0; $x < count($data); $x++) {
-        $users = "<tr class = 'user-data'><td scope='row'>" . $data[$x][0] . "</td>
-        <td scope='col'>" . $data[$x][1] . "</td>
-        <td scope='col'>" . $data[$x][3] . "</td>
-        <td scope='col'>" . $data[$x][2] . "</td>
-        <td scope='col'>" . $data[$x][5] . "</td>
-        <td scope='col'> <button class='btn btn-primary' type='submit' name='".$name."' value='" . $data[$x][0] . "'>". $buttonContent ."</button> </td></tr>";
+        $users = "<tr>
+        <td>" . $data[$x][0] . "</td>
+        <td>" . $data[$x][1] . "</td>
+        <td>" . $data[$x][3] . "</td>
+        <td>" . $data[$x][2] . "</td>
+        <td>" . $data[$x][5] . "</td>
+        <td> <button class='btn btn-primary' type='submit' name='".$name."' value='" . $data[$x][0] . "'>". $buttonContent ."</button> </td></tr>";
         echo $users;
     }
 }
