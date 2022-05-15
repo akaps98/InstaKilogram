@@ -25,7 +25,7 @@ require_once __DIR__. DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTOR
     <div class="signupbox">
         <h2 class="fs-4 fw-bold" id="signup_text">Admin Login</h2>
         <div class="formbox">
-            <form action="admin-login.php" method="post" enctype="multipart/form-data">
+            <form action="admin-login.php" method="post" enctype="multipart/form-data" class="login-box">
                 <!--Input email-->
                 <div class="input-email">
                     <div class="input-box">
@@ -34,7 +34,7 @@ require_once __DIR__. DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTOR
                     </div>
                     <!--check email validation(unique)-->
                 </div>
-                <div class="input-password">
+                <div class="input-password1">
                     <!--Input password-->
                     <div class="input-box">
                         <input id="password" name="password" type="password" placeholder="Password">
