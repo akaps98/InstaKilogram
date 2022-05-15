@@ -29,20 +29,13 @@ directToUserProfile();
             <input type="text" name="q-name" id="search-user" placeholder = "Search user">
             <input type="submit" value="submit" >
         </form>
-        <form action="user-management.php" method="get">
-            <table class="table">
-                <caption>List of users</caption>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Gender</th>
-                    <th>Role</th>
-                    <th>Action</th>
-                </tr>
+        <div id="user-list">
+            <form action="user-management.php" method="get">
+                <div class="row">
                     <?php renderListing(); ?>
-            </table>
-        </form>
+                </div>
+            </form>
+        </div>
     </div>
 </main>
 <!--footer-->

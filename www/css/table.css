@@ -1,63 +1,30 @@
-table {
-    width: 100%;
-    border-collapse: collapse;
+.infor-container{
+    background-color: #F7F6F2;
+    border: solid black 1px;
+    border-radius: 10px;
+    width: 95%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
 }
-/* Zebra striping */
-tr:nth-of-type(odd) {
-    background: #eee;
+.box-container{
+    text-align: center;
+    height: fit-content;
 }
-th {
-    background: #333;
-    color: black;
-    font-weight: bold;
+.user-infor{
+    width: fit-content;
+    margin: auto
 }
-td, th {
-    padding: 6px;
-    border: 1px solid #ccc;
-    text-align: left;
+.image-box{
+    overflow: hidden;
+    height: 300px;
 }
-@media
-only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1024px) {
-
-    table, thead, tbody, th, td, tr {
-        display: block;
-    }
-
-    thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-
-    tr {
-        border: 1px solid #ccc;
-    }
-
-    td {
-        border: none;
-        border-bottom: 1px solid #eee;
-        position: relative;
-        padding-left: 50%;
-        display: block;
-        text-align: right;
-
-    }
-
-    td:before {
-        position: absolute;
-        top: 6px;
-        left: 6px;
-        width: 45%;
-        padding-right: 10px;
-        white-space: nowrap;
-        text-align: left;
-    }
-    td:nth-of-type(1):before { content: "ID"; }
-    td:nth-of-type(2):before { content: "Name"; }
-    td:nth-of-type(3):before { content: "Email"; }
-    td:nth-of-type(4):before { content: "Gender"; }
-    td:nth-of-type(5):before { content: "Role"; }
-    td:nth-of-type(6):before { content: "Action"; }
+.image-container{
+    width: 90%;
+    height: auto;
+    margin: auto;
 }
-
+.view-button{
+    margin-bottom: 10px ;
+}
