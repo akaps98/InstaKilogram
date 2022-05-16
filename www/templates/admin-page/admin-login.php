@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__. DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'php'.DIRECTORY_SEPARATOR.'session-handler.php';
 require_once __DIR__. DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'php'.DIRECTORY_SEPARATOR.'auth-handler.php';
+$error_message = '';
+login( $error_message, true);
 ?>
 
 <!DOCTYPE html>
@@ -27,21 +29,21 @@ require_once __DIR__. DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTOR
         <div class="formbox">
             <form action="admin-login.php" method="post" enctype="multipart/form-data" class="login-box">
                 <!--Input email-->
-                <div class="input-email">
+                <div class="input-email col-sm-12">
                     <div class="input-box">
                         <input id="email-add" name="email-add" type="email" placeholder="Email address">
                         <label for="email-add">Email address</label>
                     </div>
                     <!--check email validation(unique)-->
                 </div>
-                <div class="input-password1">
+                <div class="input-password1 col-sm-12">
                     <!--Input password-->
                     <div class="input-box">
                         <input id="password" name="password" type="password" placeholder="Password">
                         <label for="password">Password</label>
                     </div>
                 </div>
-                <h3> <?php login(true)?></h3>
+                <h3> <?php echo $error_message ?></h3>
                 <button class="btn btn-primary btn-lg" id="login" type="submit">Login
                 </button>
             </form>

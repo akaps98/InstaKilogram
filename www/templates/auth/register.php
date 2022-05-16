@@ -25,8 +25,8 @@ require_once __DIR__. DIRECTORY_SEPARATOR.'..' . DIRECTORY_SEPARATOR . '..' . DI
     <!--Sign up-->
     <div class="signupbox">
         <h2 class="fs-4 fw-bold" id="signup_text">Sign Up</h2>
-        <div class="formbox">
-            <form id="signup-form" action="register.php" method="post" onchange="checkEmpty()" onsubmit="check_signup(event)" enctype="multipart/form-data">
+        <div class="form-box container-fluid">
+            <form id="signup-form" class="container-fluid" action="register.php" method="post" onchange="checkEmpty()" onsubmit="check_signup(event)" enctype="multipart/form-data">
                 <!--Input email-->
                 <div class="input-email">
                     <div class="input-box">

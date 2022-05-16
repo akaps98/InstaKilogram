@@ -166,28 +166,22 @@ function register()
 }
 
 
-function login($isAdminLogin=false)
+function login(&$error_message, $isAdminLogin=false)
 {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = validateInput($_POST['email-add']);
         $pw = validateInput($_POST['password']);
-        echo $email;
-        echo $pw;
         $result = getUser( __DIR__ . DIRECTORY_SEPARATOR . '..'.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'users.csv', $email, $isAdminLogin);
         if($result){
             if (password_verify($pw, $result[4])) {
                 setUserSession($result);
-                if(!$isAdminLogin){
-                    header("Location: " . ".." . DIRECTORY_SEPARATOR ."user" . DIRECTORY_SEPARATOR . "profile.php");
-                }else{
-                    header("Location: " .".." . DIRECTORY_SEPARATOR ."user" . DIRECTORY_SEPARATOR . "profile.php");
-                }
+                header("Location: " . ".." . DIRECTORY_SEPARATOR ."user" . DIRECTORY_SEPARATOR . "profile.php");
                 exit();
             }else{
-                echo "Wrong password";
+                $error_message = "Wrong password";
             }
         }else{
-            echo "Your Email is invalid";
+            $error_message = "Your Email is invalid";
         }
         return null;
     }

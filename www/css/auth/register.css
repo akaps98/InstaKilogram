@@ -48,10 +48,7 @@ input {
     padding-top: 20px;
 }
 
-.formbox {
-    width: 28%;
-    margin: 0 auto;
-}
+
 
 .fs-4 {
     width: 100%;
@@ -135,14 +132,33 @@ input:focus, input:not(:placeholder-shown){
 }
 
 @media screen and (min-width: 480px) {
-    .formbox {
-        width: 50%;
+    .form-box {
+        width: 90%;
         margin: 0 auto;
     }
+    .input-email {
+        width: 100%;
+    }
+
+    .input-password1 {
+        width: 100%;
+    }
+
 }
 
 @media screen and (min-width: 768px) and (max-width:1023px) {
     /* remain layout as upper part */
+    .input-email {
+        width: 100%;
+    }
+
+    .input-password1 {
+        width: 100%;
+    }
+    .form-box {
+        width: 50%;
+        margin: 0 auto;
+    }
 }
 
 @media screen and (min-width: 1024px) {
@@ -196,5 +212,10 @@ input:focus, input:not(:placeholder-shown){
 
     .input-password1 {
         width: 50%;
+    }
+
+    .form-box {
+        width: 28%;
+        margin: 0 auto;
     }
 }

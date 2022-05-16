@@ -1,7 +1,8 @@
 <?php
+$error_message = '';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'session-handler.php';
 require_once __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR . '..'.DIRECTORY_SEPARATOR.'php'.DIRECTORY_SEPARATOR.'auth-handler.php';
-login();
+login( $error_message);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +24,7 @@ login();
     <!--Sign up-->
     <div class="signupbox">
         <h2 class="fs-4 fw-bold" id="signup_text">Login</h2>
-        <div class="formbox">
+        <div class="form-box container-fluid">
             <form action="login.php" method="post" enctype="multipart/form-data" class="login-box">
                 <!--Input email-->
                 <div class="input-email">
@@ -42,6 +43,7 @@ login();
                 </div>
                 <div class="d-flex flex-column">
                 <a href="register.php"> Do not have account? Register now! </a>
+                <?php echo $error_message ?>
                 <button class="btn btn-primary btn-lg" id="login" type="submit">Login
                 </button>
                 </div>
