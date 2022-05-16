@@ -1,7 +1,8 @@
 <?php
+$error_message = '';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'session-handler.php';
 require_once __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR . '..'.DIRECTORY_SEPARATOR.'php'.DIRECTORY_SEPARATOR.'auth-handler.php';
-login();
+login( $error_message);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,8 +24,8 @@ login();
     <!--Sign up-->
     <div class="signupbox">
         <h2 class="fs-4 fw-bold" id="signup_text">Login</h2>
-        <div class="formbox">
-            <form action="login.php" method="post" enctype="multipart/form-data">
+        <div class="form-box container-fluid">
+            <form action="login.php" method="post" enctype="multipart/form-data" class="login-box">
                 <!--Input email-->
                 <div class="input-email">
                     <div class="input-box">
@@ -33,7 +34,7 @@ login();
                     </div>
                     <!--check email validation(unique)-->
                 </div>
-                <div class="input-password">
+                <div class="input-password1">
                     <!--Input password-->
                     <div class="input-box">
                         <input id="password" name="password" type="password" placeholder="Password">
@@ -41,7 +42,8 @@ login();
                     </div>
                 </div>
                 <div class="d-flex flex-column">
-                <a href="<?= navigate(__DIR__. DIRECTORY_SEPARATOR.'/templates/auth/register.php') ?>"> Do not have password? Register now! </a>
+                <a href="register.php"> Do not have account? Register now! </a>
+                <?php echo $error_message ?>
                 <button class="btn btn-primary btn-lg" id="login" type="submit">Login
                 </button>
                 </div>

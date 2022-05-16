@@ -173,16 +173,16 @@ function getListOfPost()
     return getPosts($_SESSION['userType']);
 }
 
-function updateCSVRow($otherId, $newContent=null, $newRowValue=null){
+function updateCSVRow($otherId, $newPassword,$newContent=null, $newRowValue=null){
     $data = [];
-    $target = $newContent ? 'posts.csv' : 'users.csv';
-    if ($newContent === "changeProfileImage") $target='users.csv';
+    if ($newContent === "changeProfileImage" || $newContent==="changePassword") $target='users.csv';
+    if ($newContent === "deleted") $target = 'posts.csv';
     $filePath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR. 'data'. DIRECTORY_SEPARATOR . $target;
     $content = fopen($filePath, 'r');
     while (($row = fgetcsv($content)) !== false) {
         if ($row[0] === $otherId){
-            if (!$newContent) {
-                $row[4] = password_hash('Palomino1!', PASSWORD_BCRYPT);
+            if ($newContent==="changePassword") {
+                $row[4] = password_hash($newPassword, PASSWORD_BCRYPT);
             } else if ($newContent === 'deleted') {
                 $row = array($otherId,'has_deleted');
             } else if ($newContent === 'changeProfileImage'){

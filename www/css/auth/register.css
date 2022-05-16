@@ -48,10 +48,7 @@ input {
     padding-top: 20px;
 }
 
-.formbox {
-    width: 28%;
-    margin: 0 auto;
-}
+
 
 .fs-4 {
     width: 100%;
@@ -64,8 +61,11 @@ input {
     margin: auto;
 }
 
-#signup {
+#signup,#reset-button {
     margin-top: 25px;
+}
+#reset-button{
+    background-color: grey;
 }
 
 .input-box {
@@ -129,4 +129,93 @@ input:focus + label, label{
 input:focus, input:not(:placeholder-shown){
     border-bottom: solid 1px #8aa1a1;
     outline:none;
+}
+
+@media screen and (min-width: 480px) {
+    .form-box {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .input-email {
+        width: 100%;
+    }
+
+    .input-password1 {
+        width: 100%;
+    }
+
+}
+
+@media screen and (min-width: 768px) and (max-width:1023px) {
+    /* remain layout as upper part */
+    .input-email {
+        width: 100%;
+    }
+
+    .input-password1 {
+        width: 100%;
+    }
+    .form-box {
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .input-email {
+        margin: 0 auto;
+    }
+
+    .input-password {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .first-pw {
+        width: 50%;
+    }
+
+    .second-pw {
+        width: 50%;
+    }
+
+    .input-name {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .first-name {
+        width: 50%;
+    }
+
+    .last-name {
+        width: 50%;
+    }
+
+    .login-box {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .input-email {
+        width: 50%;
+    }
+
+    .input-password1 {
+        width: 50%;
+    }
+
+    .form-box {
+        width: 28%;
+        margin: 0 auto;
+    }
 }

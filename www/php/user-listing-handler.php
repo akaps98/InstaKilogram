@@ -37,12 +37,16 @@ function printUsers($data, $canDelete=false)
         $name = "delete-post";
     }
     for ($x = 0; $x < count($data); $x++) {
-        $users = "<tr class = 'user-data'><td scope='row'>" . $data[$x][0] . "</td>
-        <td scope='col'>" . $data[$x][1] . "</td>
-        <td scope='col'>" . $data[$x][3] . "</td>
-        <td scope='col'>" . $data[$x][2] . "</td>
-        <td scope='col'>" . $data[$x][5] . "</td>
-        <td scope='col'> <button class='btn btn-primary' type='submit' name='".$name."' value='" . $data[$x][0] . "'>". $buttonContent ."</button> </td></tr>";
+        $users = '<div class="col-sm-6 col-xl-3 box-container">
+        <div class="infor-container">
+            <div class="user-infor"><label for="">'.$data[$x][0].'</label> </div>
+            <div class="user-infor image-box"><img class = "image-container" src="data:image/jpg;charset=utf8;base64,'.$data[$x][6].'"/></div>
+            <div class="user-infor"><label for="">'.$data[$x][3].'</label></div>
+            <div class="user-infor"><label for="">'.$data[$x][5].'</label></div>
+            <div> <button class="btn btn-primary view-button" type="submit" name="'.$name.'" value="' . $data[$x][0] . '">'. $buttonContent .'</button></div>
+        </div>
+        </div>';
+
         echo $users;
     }
 }
@@ -63,7 +67,7 @@ function directToUserProfile()
         if (!$pid) {
             echo "Error can't go to profile";
         } else {
-            updateCSVRow($pid, 'deleted');
+            updateCSVRow($pid, "",'deleted');
         }
     }
     }

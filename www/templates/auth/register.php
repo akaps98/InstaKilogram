@@ -25,8 +25,8 @@ require_once __DIR__. DIRECTORY_SEPARATOR.'..' . DIRECTORY_SEPARATOR . '..' . DI
     <!--Sign up-->
     <div class="signupbox">
         <h2 class="fs-4 fw-bold" id="signup_text">Sign Up</h2>
-        <div class="formbox">
-            <form action="register.php" method="post" onsubmit="check_signup(event)" enctype="multipart/form-data">
+        <div class="form-box container-fluid">
+            <form id="signup-form" class="container-fluid" action="register.php" method="post" onchange="checkEmpty()" onsubmit="check_signup(event)" enctype="multipart/form-data">
                 <!--Input email-->
                 <div class="input-email">
                     <div class="input-box">
@@ -40,20 +40,24 @@ require_once __DIR__. DIRECTORY_SEPARATOR.'..' . DIRECTORY_SEPARATOR . '..' . DI
                 </div>
                 <div class="input-password">
                     <!--Input password-->
-                    <div class="input-box">
-                        <input id="password" name="password" type="password" placeholder="Password"
-                               onchange="check_pass();">
-                        <label for="password">Password</label>
+                    <div class="first-pw">
+                        <div class="input-box">
+                            <input id="password" name="password" type="password" placeholder="Password"
+                                onchange="check_pass();">
+                            <label for="password">Password</label>
+                        </div>
+                        <span id="check-valid-pass"></span>
+                        <?php isValidPassword() ?>
                     </div>
-                    <span id="check-valid-pass"></span>
-                    <?php isValidPassword() ?>
+                    <div class="second-pw">
                     <!--Recheck password-->
-                    <div class="input-box">
-                        <input id="password-confirm" name="password-confirm" type="password"
-                               placeholder="Check Password" onchange="check_confirm_pass();">
-                        <label for="password-confirm">Check password</label>
+                        <div class="input-box">
+                            <input id="password-confirm" name="password-confirm" type="password"
+                                placeholder="Check Password" onchange="check_confirm_pass();">
+                            <label for="password-confirm">Check password</label>
+                        </div>
+                        <span id="check-password"></span>
                     </div>
-                    <span id="check-password"></span>
                 </div>
                 <div class="input-box">
                     <p class="d-flex flex-start"> Gender </p>
@@ -71,28 +75,32 @@ require_once __DIR__. DIRECTORY_SEPARATOR.'..' . DIRECTORY_SEPARATOR . '..' . DI
                 <?php isValidFileExtention() ?>
                 <div class="input-name">
                     <!--input first name-->
-                    <div class="input-box">
-                        <input id="first-name" name="first-name" type="first-name" placeholder="First name"
-                               onchange="check_fname();">
-                        <label for="first-name">First name</label>
+                    <div class="first-name">   
+                        <div class="input-box">
+                            <input id="first-name" name="first-name" type="first-name" placeholder="First name"
+                                onchange="check_fname();">
+                            <label for="first-name">First name</label>
+                        </div>
+                        <span id="check-fname"></span>
+                        <?php isValidFirstName() ?>
                     </div>
-                    <span id="check-fname"></span>
-                    <?php isValidFirstName() ?>
                     <!--input last name-->
-                    <div class="input-box">
-                        <input id="last-name" name="last-name" type="last-name" placeholder="Last name"
-                               onchange="check_lname();">
-                        <label for="last-name">Last name</label>
+                    <div class="last-name">
+                        <div class="input-box">
+                            <input id="last-name" name="last-name" type="last-name" placeholder="Last name"
+                                onchange="check_lname();">
+                            <label for="last-name">Last name</label>
+                        </div>
+                        <span id="check-lname"></span>
+                        <?php isValidLastName() ?>
                     </div>
-                    <span id="check-lname"></span>
-                    <?php isValidLastName() ?>
                 </div>
                 <a href="<?= navigate(DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'auth' . DIRECTORY_SEPARATOR . 'login.php') ?>">
                     Already have one account? Login now! </a>
                 <h3> <?php register() ?></h3>
-                <button class="btn btn-primary btn-lg" id="signup" type="submit">Sign Up
-                </button>
-            </form>
+                </form>
+                <button form="signup-form" class="btn btn-primary btn-lg" id="signup" type="submit">Sign Up</button>
+                <button class="btn btn-primary btn-lg" id="reset-button" onclick="resetForm();">Reset</button>
         </div>
     </div>
 </main>

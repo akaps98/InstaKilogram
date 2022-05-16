@@ -3,6 +3,28 @@ let check_len_pw = true;
 let check_len_fname = true;
 let check_len_lname = true;
 
+function resetForm(){
+    document.getElementById("signup-form").reset();
+    checkEmpty();
+    document.querySelector("#check-valid-pass").innerHTML = "";
+    document.getElementById("check-password").innerHTML = "";
+    document.getElementById("check-fname").innerHTML = "";
+    document.getElementById("check-lname").innerHTML = "";
+    document.querySelector("#check_email").innerHTML = "";
+}
+function checkEmpty(){
+    let input_email = document.getElementById("email-add").value;
+    let input_pass = document.getElementById("password").value;
+    let confirm_pass =document.getElementById("password-confirm").value;
+    let input_fname = document.getElementById("first-name").value;
+    let input_lname = document.getElementById("last-name").value;
+    if(!input_email && !input_pass &&!confirm_pass && !input_fname && !input_lname) {
+        document.getElementById("reset-button").style.backgroundColor = "grey";
+    }else{
+        document.getElementById("reset-button").style.backgroundColor = "#0d6efd";
+    }
+}
+
 // check password
 function check_pass() {
     document.querySelector("#password").style.borderBottom = "solid 1px #ccc"; 
@@ -88,11 +110,6 @@ function check_lname() {
         }
     }
 }
-function check_file_extention(){
-    let valid_extension = [""]
-    let image = document.querySelector("#image").value;
-    console.log(image.split('.').pop());
-}
 
 function check_email(){
     document.querySelector("#email-add").style.borderBottom = "solid 1px #ccc";
@@ -111,6 +128,21 @@ function check_email(){
     }
 }
 
+function checkResetPassword(event){
+    let input_pass = document.getElementById("password").value;
+    let confirm_pass =document.getElementById("password-confirm").value;
+
+    if(!input_pass ||!confirm_pass) {
+        event.preventDefault();
+        alert("Fail to register. \nPlease fill in the blanks.");
+        if(!input_pass){
+            document.querySelector("#password").style.borderColor = "red"; 
+        }
+        if(!confirm_pass){
+            document.querySelector("#password-confirm").style.borderColor = "red";
+        }
+    }
+}
 
 // if there are any blanks or any invalid information, register will be rejected.
 async function check_signup(event) {
