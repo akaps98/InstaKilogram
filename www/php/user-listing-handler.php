@@ -67,7 +67,7 @@ function directToUserProfile()
         if (!$pid) {
             echo "Error can't go to profile";
         } else {
-            updateCSVRow($pid, 'deleted');
+            updateCSVRow($pid, "",'deleted');
         }
     }
     }

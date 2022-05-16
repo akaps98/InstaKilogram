@@ -39,7 +39,7 @@ function handleEditProfileImage($userId, &$message)
 {
     $image = getImage();
     if ($image) {
-        updateCSVRow($userId, 'changeProfileImage', $image);
+        updateCSVRow($userId, "",'changeProfileImage', $image);
         $message = "Update User Image Successfully! Please reload the page!";
     }
 }

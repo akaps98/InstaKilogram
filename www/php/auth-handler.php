@@ -239,7 +239,7 @@ function preResetPassword($otherId){
 function resetOtherPassword($otherId, &$userMessage,$newPassword){
     if (checkViewOtherPermission()){
         //$userMessage = 'User Password of user '. $otherId.' has been reset';
-        updateCSVRow($otherId, $newPassword);
+        updateCSVRow($otherId, $newPassword, 'changePassword');
         return 'User Password of user '. $otherId.' has been reset';
     }
     }
