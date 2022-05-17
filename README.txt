@@ -5,6 +5,7 @@ Student ID: s3823477/Name: Vo Gia Bao/contribution: 25%
 Student ID: s3885751/Name: Hoang Duc Phuong/contribution: 25%
 Student ID: s3790708/Name: Vu Viet Minh/contribution: 25%
 
+Release 1.0.0
 Github repo: https://github.com/akaps98/InstaKilogram
 
 If you want to start and run our website you must have a cmd that have php support:
